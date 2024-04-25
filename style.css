@@ -1,0 +1,67 @@
+
+body{
+    background-color: burlywood;
+    width: 100%;
+}
+
+.container-fluild{
+    
+}
+
+.col{
+   
+}
+
+form{
+    background-color: brown;
+    padding: 20px;
+    border-radius: 20px;
+}
+ label{
+    color: white;
+ }
+
+
+h1{
+    border-bottom: 1px solid white;
+    text-align: center;
+    background-color: brown;
+    border-radius: 10px;
+    height: 80px;
+    color: white;
+    line-height: 80px;
+    
+}
+
+.tester{
+    height: 30px;
+    position: absolute;
+}
+
+.bookSpace{
+display: inline-flex;
+margin: 10px;
+}
+
+.bookInfoBox{
+background-color: brown;
+border-radius:  20px;
+padding: 10px;
+height: auto;
+width: 300px;
+color: white;
+margin: 10px;
+ }
+
+.fs-3{
+    color: burlywood;
+    border-bottom: 1px solid white;
+    text-align: center;
+    font-weight: 600;
+ }
+ p{
+    color: white;
+    font-size: 1.2rem;
+    font-family: sans-serif;
+ }
+ 
