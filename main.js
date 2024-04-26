@@ -23,6 +23,17 @@ const addNewBookBtn = document.getElementById('AddNewBook')
 
 
 
+function tester(){
+    console.log('hello')
+}
+
+
+function theLooop(){
+    for(let i =0; i<5; i++){
+        tester()
+    }
+}
+theLooop()
 
 
 
