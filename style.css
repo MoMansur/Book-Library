@@ -31,8 +31,7 @@ h1{
 
 .bookSpace{
 
-
-display: flex;
+display: inline-flex;
 }
 
 .bookInfoBox{
@@ -60,4 +59,10 @@ margin: 10px;
  h6{
     color: white;
     text-align: start;
+ }
+ span{
+
+    border-radius: 10px;
+    padding: 5px;
+    width: 100px;
  }

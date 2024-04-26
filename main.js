@@ -36,19 +36,11 @@ class Book{
     }
 }
 
-function addBookToLibrary() {
-}
 
 
-
-function newBook(title,author,pages,read){
-
-    const testBook = new Book(title,author,pages,read)
-    myLibrary.push(testBook)
-
-    console.log(testBook)
-  
-
+function addBookToLibrary(title,author,pages,read){
+    const bookHolder = new Book(title,author,pages,read)
+    myLibrary.push(bookHolder)
 
 }
 
@@ -73,7 +65,7 @@ myLibrary.push({
 
 
 
-function displayer(read){
+function displayer(){
 
 
 for(let i = 0; i<myLibrary.length; i++){
@@ -91,44 +83,78 @@ for(let i = 0; i<myLibrary.length; i++){
     const pForPages = document.createElement("p")
     pForPages.textContent = `Num of Pages: ${myLibrary[i].pages}`
 
-   
-
 
     const status =document.createElement("button")
     status.className = "btn btn-success";
+    
+    
+    const statusAnswer = document.createElement('span')
+    statusAnswer.className = "badge text-wrap"
+    statusAnswer.textContent = ''
 
-    status.addEventListener('click', ()=>{
-
-        statusChangeYes()
-        statusChangeNo()
-    })
-
-    function statusChangeYes(){
-        const statusAnswer = document.createElement('span')
-        statusAnswer.className = "badge text-wrap"
-        statusAnswer.textContent = 'Yes'
-        pForStatus.appendChild(statusAnswer)
-    }
-    function statusChangeNo(){
-        const statusAnswer = document.createElement('span')
-        statusAnswer.textContent = 'No'
-        pForStatus.appendChild(statusAnswer)
-    }
-    status.textContent = "Change Read Status"
-
-    const pForStatus = document.createElement("p")
+        const pForStatus = document.createElement("p")
+        pForStatus.id='pStatusID'
     pForStatus.textContent = `Have you read?: `
 
+    let countButtonClick = 0;
+    function switcher(){
+        countButtonClick++;
+        if(countButtonClick % 2 === 1){
+            statusAnswer.textContent = 'Yes'
+            statusAnswer.style.backgroundColor="green"
+       
+        }else{
+            statusAnswer.textContent = 'No'
+            statusAnswer.style.backgroundColor="red"
+   
+        }
+    }
+    //
+    if(myLibrary[i].read === true){
+        statusAnswer.textContent = 'Yes'
+        statusAnswer.style.backgroundColor="green"
+
+      
+
+       
+        status.addEventListener('click', ()=>{
+            switcher()
+        })
+        
+    }else{
+        statusAnswer.textContent = 'No'
+        statusAnswer.style.backgroundColor="red"
+
+     
+        status.addEventListener('click', ()=>{
+            switcher()
+        })
+    }
+
+    //HAVE YOU READ?
+       
+        pForStatus.appendChild(statusAnswer)
+    
+
+    status.textContent = "Change Read Status"
+    status.style.width= "17.2rem"
+    status.style.marginLeft= "5px"
+
+    
+
     const btnForEdit = document.createElement("button")
-    btnForEdit.className = "btn btn-secondary m-1"
+    btnForEdit.className = "btn btn-primary m-1"
     btnForEdit.type = "submit";
     btnForEdit.id = "editInfoBtn"
+    btnForEdit.style.width= "8.5rem"
+
     btnForEdit.textContent = "Edit Info"
 
     const btnForRemove =document.createElement("button")
     btnForRemove.className = "btn btn-danger"
     btnForRemove.type = "button";
     btnForRemove.id="removeBook"
+    btnForRemove.style.width= "8.5rem"
     btnForRemove.textContent = "Remove Book"
 
     //ADDER 
@@ -271,6 +297,23 @@ btnForRemoveInp.addEventListener('click', (e)=>{
 
 }
 
+
+// function forFormCall(radio, ){
+
+//     const pForStatus = document.getElementById('pStatusID')
+//     if(radio.checked){
+//         let statusAnswer = document.createElement('span')
+//         statusAnswer.textContent = 'Yes'
+//         statusAnswer.style.backgroundColor="green"
+
+//         pForStatus.appendChild(statusAnswer)
+//     }else{
+//         let statusAnswer = document.createElement('span')
+//         statusAnswer.textContent = 'NO'
+//         statusAnswer.style.backgroundColor="red"
+//         pForStatus.appendChild(statusAnswer)
+//     }
+// }
 displayer()
 
 //FORM DATA
@@ -281,24 +324,24 @@ const noRadio = document.getElementById('noRadio')
 form.addEventListener('submit', (e) => {
     e.preventDefault()
 
-    console.log(yesRadio.checked)
+
     bookSpace.innerHTML = ""
     
     
-    // if(yesRadio.checked){
-    //     let read = 'Read'
-    //     newBook(titleForm.value,authorForm.value,numOfPagesForm.value, read)
-    //     displayer(read)
-    // }else{
-    //     let didntRead = "Didnt read"
-    //     newBook(titleForm.value,authorForm.value,numOfPagesForm.value, didntRead)
-    //     displayer(didntRead)
-    // }
+    if(yesRadio.checked){
+        addBookToLibrary(titleForm.value,authorForm.value,numOfPagesForm.value, true)
+        // forFormCall(yesRadio)
+        displayer()
+    }else{
+        addBookToLibrary(titleForm.value,authorForm.value,numOfPagesForm.value, false)
+        // forFormCall(yesRadio)
+        displayer()
+    }
    
    
-    newBook(titleForm.value,authorForm.value,numOfPagesForm.value, 'read')
-    displayer()
-    console.log(myLibrary)
+    // newBook(titleForm.value,authorForm.value,numOfPagesForm.value, 'read')
+    // displayer()
+    // console.log(myLibrary)
   
 })
 
