@@ -6,10 +6,7 @@ const bookInfoBox = document.querySelector('.bookInfoBox')
 const addNewBookBtn = document.getElementById('AddNewBook')
  const removeAllBooks = document.getElementById('removeAllBooks')
 
-//  const titleSpace = document.getElementById('titleSpace')
-//  const authorSpace = document.getElementById('authorSpace')
-//  const numOfPagesSpace = document.getElementById('numOfPagesSpace')
- 
+
  
  const switchStatus = document.getElementById('switchStatus')
 
@@ -49,78 +46,11 @@ function newBook(title,author,pages,read){
     const testBook = new Book(title,author,pages,read)
     myLibrary.push(testBook)
 
-    const editInfoBtn = document.getElementById('editInfoBtn')
-
-
-for(let i = 0; i<myLibrary.length; i++){
-        const newModel = document.createElement("div")
-        newModel.className = "bookInfoBox"
-    
-        const pForTitle =document.createElement("p")
-        pForTitle.className = "fs-3";
-        pForTitle.textContent = myLibrary[i].title
-    
-        const pForAuthor = document.createElement("p")
-        pForAuthor.textContent = `Author: ${myLibrary[i].author}`
-    
-        const pForPages = document.createElement("p")
-        pForPages.textContent = `Num of Pages: ${myLibrary[i].pages}`
-    
-        const pForStatus = document.createElement("p")
-        pForStatus.textContent = `Have you read?: ${read}`
-    
-    
-        const statusYes =document.createElement("input")
-        statusYes.className = "form-check form-switch";
-        statusYes.type = "checkbox"
-        statusYes.role = "switch"
-     
-    
-        const btnForEdit = document.createElement("button")
-        btnForEdit.className = "btn btn-secondary m-1"
-        btnForEdit.type = "submit";
-        btnForEdit.id = "editInfoBtn"
-        btnForEdit.textContent = "Edit Info"
-    
-        const btnForRemove =document.createElement("button")
-        btnForRemove.className = "btn btn-danger"
-        btnForRemove.type = "button";
-        btnForRemove.textContent = "Remove Book"
-       
-    
-    
-    bookSpace.appendChild(newModel)
-    
-    newModel.appendChild(pForTitle)
-    newModel.appendChild(pForAuthor)
-    newModel.appendChild(pForPages)
-    newModel.appendChild(pForStatus)
-    
-    newModel.appendChild(statusYes)
-    
-    newModel.appendChild(btnForEdit)
-    newModel.appendChild(btnForRemove)
-    
-
-    editInfoBtn.addEventListener('click', ()=>{
-        console.log('I was just clicked')
-    })
-    
- 
-}
-
-
-}
-
-form.addEventListener('submit', (e) => {
-    e.preventDefault()
-
-    bookSpace.innerHTML = ""
-    newBook(titleForm.value,authorForm.value,numOfPagesForm.value,'not yet')
+    console.log(testBook)
   
-})
 
 
+}
 
 
 myLibrary.push({
@@ -143,4 +73,309 @@ myLibrary.push({
 
 
 
+function displayer(read){
 
+
+for(let i = 0; i<myLibrary.length; i++){
+    const newModel = document.createElement("div")
+    newModel.className = "bookInfoBox"
+    newModel.setAttribute(`data-index`, i)
+
+    const pForTitle =document.createElement("p")
+    pForTitle.className = "fs-3";
+    pForTitle.textContent = myLibrary[i].title
+
+    const pForAuthor = document.createElement("p")
+    pForAuthor.textContent = `Author: ${myLibrary[i].author}`
+
+    const pForPages = document.createElement("p")
+    pForPages.textContent = `Num of Pages: ${myLibrary[i].pages}`
+
+   
+
+
+    const status =document.createElement("button")
+    status.className = "btn btn-success";
+
+    status.addEventListener('click', ()=>{
+
+        statusChangeYes()
+        statusChangeNo()
+    })
+
+    function statusChangeYes(){
+        const statusAnswer = document.createElement('span')
+        statusAnswer.className = "badge text-wrap"
+        statusAnswer.textContent = 'Yes'
+        pForStatus.appendChild(statusAnswer)
+    }
+    function statusChangeNo(){
+        const statusAnswer = document.createElement('span')
+        statusAnswer.textContent = 'No'
+        pForStatus.appendChild(statusAnswer)
+    }
+    status.textContent = "Change Read Status"
+
+    const pForStatus = document.createElement("p")
+    pForStatus.textContent = `Have you read?: `
+
+    const btnForEdit = document.createElement("button")
+    btnForEdit.className = "btn btn-secondary m-1"
+    btnForEdit.type = "submit";
+    btnForEdit.id = "editInfoBtn"
+    btnForEdit.textContent = "Edit Info"
+
+    const btnForRemove =document.createElement("button")
+    btnForRemove.className = "btn btn-danger"
+    btnForRemove.type = "button";
+    btnForRemove.id="removeBook"
+    btnForRemove.textContent = "Remove Book"
+
+    //ADDER 
+
+    bookSpace.appendChild(newModel)
+    newModel.appendChild(pForTitle)
+    newModel.appendChild(pForAuthor)
+    newModel.appendChild(pForPages)
+    newModel.appendChild(pForStatus)
+    newModel.appendChild(status)
+
+    newModel.appendChild(btnForEdit)
+    newModel.appendChild(btnForRemove) 
+
+
+
+    function replacer(theModel){
+        newModel.remove(theModel)
+       
+        
+    }
+
+    //EDITTER items
+    const editForm=document.createElement('form')
+    editForm.className = "form"
+    editForm.id = "form"
+
+    let tester ='called'
+        const titleInputED =document.createElement("input")
+        titleInputED.className = "form-control mb-2";
+        titleInputED.placeholder = `Book Title`
+        titleInputED.type = "Text"
+
+        titleInputED.textContent = tester
+    
+        const authorInputED = document.createElement("input")
+        authorInputED.className = "form-control mb-2"
+        authorInputED.placeholder = "Change Author"
+        authorInputED.type= 'text'
+        
+   
+    
+        const pagesInputED = document.createElement("input")
+        pagesInputED.className = "form-control mb-2"
+        pagesInputED.placeholder="Number Of Pages"
+        pagesInputED.type = "number"
+
+        pagesInputED.textContent = `Num of Pages: ${tester}`
+
+        const btnForEditInp = document.createElement("button")
+        btnForEditInp.className = "btn btn-primary m-1"
+        btnForEditInp.style.width = "9rem"
+        btnForEditInp.style.float = "left"
+        btnForEditInp.type = "submit";
+        btnForEditInp.id = "editInfoBtn"
+        btnForEditInp.textContent = "Update Book"
+    
+        const btnForRemoveInp =document.createElement("button")
+        btnForRemoveInp.className = "btn btn-danger m-1"
+        btnForRemoveInp.type = "button";
+        btnForRemoveInp.id="removeBook"
+        btnForRemoveInp.textContent = "Delete Book"
+
+   
+    
+
+function editPopUpModel(){
+    const pForTitle =document.createElement("p")
+    pForTitle.className = "fs-3";
+    pForTitle.textContent = 'Update your Book'
+
+    newModel.appendChild(pForTitle)
+newModel.appendChild(editForm)
+newModel.appendChild(titleInputED)
+newModel.appendChild(authorInputED)
+newModel.appendChild(pagesInputED)
+newModel.appendChild(btnForEditInp)
+newModel.appendChild(btnForRemoveInp)
+
+
+}
+
+function editNewView(){
+  
+    newModel.removeChild(btnForEdit)
+    newModel.removeChild(btnForRemove)
+    newModel.removeChild(pForTitle)
+    newModel.removeChild(pForAuthor)
+    newModel.removeChild(pForPages)
+    newModel.removeChild(pForStatus)
+    newModel.removeChild(status)
+}
+
+//EDIT BUTTON EVENT 
+btnForEdit.addEventListener('click', ()=>{
+    editNewView()  
+    editPopUpModel()
+   
+})
+
+
+//REMOVE BUTTON HANDLER
+btnForRemove.addEventListener('click', (e)=>{
+    const index = parseInt(newModel.getAttribute("data-index"));
+    console.log(index)
+
+    var confirmToRemove = confirm('Are you sure you want to remove this book')
+
+    if(confirmToRemove){
+        myLibrary.splice(index, 1);
+        replacer(newModel)
+    }else{
+        alert('Cancelled')
+    }
+   
+
+   
+    console.log(myLibrary)
+
+
+  
+})
+
+//REMOVE BOTTON FROM EDIT OPTIONS
+btnForRemoveInp.addEventListener('click', (e)=>{
+    const index = parseInt(newModel.getAttribute("data-index"));
+    var confirmToRemove = confirm('Are you sure you want to remove this book')
+
+    if(confirmToRemove){
+        myLibrary.splice(index, 1);
+        console.log(index)
+        replacer(newModel)
+    }else{
+        alert('Cancelled')
+    }
+})
+
+
+}
+
+}
+
+displayer()
+
+//FORM DATA
+
+const yesRadio = document.getElementById('yesRadio')
+const noRadio = document.getElementById('noRadio')
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    console.log(yesRadio.checked)
+    bookSpace.innerHTML = ""
+    
+    
+    // if(yesRadio.checked){
+    //     let read = 'Read'
+    //     newBook(titleForm.value,authorForm.value,numOfPagesForm.value, read)
+    //     displayer(read)
+    // }else{
+    //     let didntRead = "Didnt read"
+    //     newBook(titleForm.value,authorForm.value,numOfPagesForm.value, didntRead)
+    //     displayer(didntRead)
+    // }
+   
+   
+    newBook(titleForm.value,authorForm.value,numOfPagesForm.value, 'read')
+    displayer()
+    console.log(myLibrary)
+  
+})
+
+
+
+
+
+
+function editButton(newTitle, newAuthor, newPage){
+    const newModel = document.createElement("div")
+        newModel.className = "bookInfoBox"
+        
+    const editForm=document.createElement('form')
+    editForm.className = "form"
+
+        const titleInputED =document.createElement("input")
+        titleInputED.className = "form-control mb-2";
+        titleInputED.placeholder = `Book Title`
+        titleInputED.type = "Text"
+
+        titleInputED.textContent = newTitle
+    
+        const authorInputED = document.createElement("input")
+        authorInputED.className = "form-control mb-2"
+        authorInputED.placeholder = "Change Author"
+        authorInputED.type= 'text'
+        
+        authorInputED.textContent = `Author: ${newAuthor}`
+    
+        const pagesInputED = document.createElement("input")
+        pagesInputED.className = "form-control mb-2"
+        pagesInputED.placeholder="Number Of Pages"
+        pagesInputED.type = "number"
+
+        pagesInputED.textContent = `Num of Pages: ${newPage}`
+    
+        const pForStatus = document.createElement("p")
+        pForStatus.textContent = `Have you read?: `
+    
+    
+        const statusYes =document.createElement("input")
+        statusYes.className = "form-check form-switch";
+        statusYes.type = "checkbox"
+        statusYes.role = "switch"
+     
+    
+        const btnForEditInp = document.createElement("button")
+        btnForEditInp.className = "btn btn-primary m-1"
+        btnForEditInp.style.width = "9rem"
+        btnForEditInp.style.float = "left"
+        btnForEditInp.type = "submit";
+        btnForEditInp.id = "editInfoBtn"
+        btnForEditInp.textContent = "Update Book"
+    
+        const btnForRemoveInp =document.createElement("button")
+        btnForRemoveInp.className = "btn btn-danger m-1"
+        btnForRemoveInp.type = "button";
+        btnForRemoveInp.id="removeBook"
+        btnForRemoveInp.textContent = "Delete Book"
+
+        bookSpace.appendChild(newModel)
+    
+        newModel.appendChild(editForm)
+
+    newModel.appendChild(titleInputED)
+    newModel.appendChild(authorInputED)
+    newModel.appendChild(pagesInputED)
+    newModel.appendChild(pForStatus)
+    
+    newModel.appendChild(statusYes)
+    
+    newModel.appendChild(btnForEditInp)
+    newModel.appendChild(btnForRemoveInp)
+  
+    
+    
+}
+
+
+// bookSpace.createElement('span')

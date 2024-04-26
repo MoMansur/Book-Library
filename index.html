@@ -9,42 +9,49 @@
 </head>
 
 <body>
-  
-    <div class="container-fluild">
-         <h1 class="rounded-bottom-2 ">My Book Library</h1>
-        <div class="row">
-            <div class="col">
-                <button  class="btn btn-primary m-2" id="AddNewBook" >Add new Book</button>
-                <button class="btn btn-danger" id="removeAllBooks" type="reset">Remove All Books from Library</button>
-            </div>
-        </div>
+  <h1 class="rounded-bottom-2 ">My Book Library</h1>
+    <div class="container-fluid">
+         
+      
 
         <div class="row">
-            <div class="col-2">
+            <div class="col-3">
                 <form id="form">
                     <label class="form-label">Book Title</label>
-                    <input class="form-control"  type="text" name="title" id="titleForm" required>
+                    <input class="form-control"  type="text" name="title" id="titleForm" >
             
                     <label class="form-label">Author</label>
-                    <input class="form-control" type="text" name="author" id="authorForm" required>
+                    <input class="form-control" type="text" name="author" id="authorForm" >
             
                     <label class="form-label">Number Of Pages</label> 
-                    <input class="form-control" type="number" name="numPages" id="numOfPagesForm"  required>
-            
-                    <label class="form-check-label">Yes/No</label>
-                   <div class="form-check form-switch">
-                    <input type="checkbox" class="form-check-input" id="switchStatus">
-                   </div>
+                    <input class="form-control" type="number" name="numPages" id="numOfPagesForm"  >
+
+                    <div class="form-check">
+                        <h6 class="text-start">
+                           Have you Read the Book?</h6>
+
+                        <input id="yesRadio" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                         Yes
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input id="noRadio" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                          No
+                        </label>
+                      </div>
             
                    <button class="btn btn-primary" type="submit" id="addBookFormBtn">Add Book</button>
             
                 </form>  
             </div>
 
-            <div class="col">
+            <div class="col-10">
                 <div class="bookSpace"> 
 
-                    
+                        
+                        
 
                 
             </div>

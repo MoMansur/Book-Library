@@ -8,9 +8,16 @@
 <button id="removeBook" class="btn btn-danger">Remove</button>
 </div>
 
+`<div class="badge text-bg-primary text-wrap" style="width: 6rem;">
+This text should wrap.
+</div>`
 
-
-
+`  <div class="row">
+<div class="col">
+    <button  class="btn btn-primary m-2" id="AddNewBook" >Add new Book</button>
+    <button class="btn btn-danger" id="removeAllBooks" type="reset">Remove All Books from Library</button>
+</div>
+</div>`
 
 
 // editButton.addEventListener('click', editButton())

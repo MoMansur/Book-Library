@@ -1,11 +1,7 @@
 
 body{
     background-color: burlywood;
-    width: 100%;
-}
-
-.container-fluild{
-  
+    
 }
 
 
@@ -31,16 +27,12 @@ h1{
     
 }
 
-.tester{
-    height: 30px;
-    position: absolute;
-}
+
 
 .bookSpace{
 
-display: inline-flex;
-position: relative;
-margin: 10px;
+
+display: flex;
 }
 
 .bookInfoBox{
@@ -65,3 +57,7 @@ margin: 10px;
     font-family: sans-serif;
  }
  
+ h6{
+    color: white;
+    text-align: start;
+ }
