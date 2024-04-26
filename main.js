@@ -1,20 +1,28 @@
-
 //Book Library
 const bookSpace = document.querySelector('.bookSpace')
-
 //Book Info
 const bookInfoBox = document.querySelector('.bookInfoBox')
-
 //Button
-const addNewBookBtn = document.querySelector('#AddNewBook')
+const addNewBookBtn = document.getElementById('AddNewBook')
+ const removeAllBooks = document.getElementById('removeAllBooks')
 
 
+ const switchStatus = document.getElementById('switchStatus')
 
+
+ const titleForm = document.getElementById('titleForm')
+ const authorForm = document.getElementById('authorForm')
+ const numOfPagesForm = document.getElementById('numOfPagesForm')
+ 
+ const form = document.getElementById('form')
+ 
+ const addBookFormBtn = document.getElementById('addBookFormBtn')
+ 
+ const editInfoBtn = document.getElementById('editInfoBtn')
 
 
 
 const myLibrary = [];
-
 class Book{
     constructor(title, author, pages, read){
         this.title = title;
@@ -22,18 +30,63 @@ class Book{
         this.pages = pages;
         this.read = read
     }
-    
     readStatus(){
         let readStatusStr = this.read ? "read" : "not read yet";
          
     }
 }
 
-function addBookToLibrary(title, author, pages, read) {
- const newBook = new Book(title, author, pages, read)
+function addBookToLibrary() {
+}
 
- newBook.push(myLibrary)
-  }
+
+const titleSpace = document.getElementById('titleSpace')
+const authorSpace = document.getElementById('authorSpace')
+const numOfPagesSpace = document.getElementById('numOfPagesSpace')
+
+
+function test(){
+    console.log('I ahve been clicked')
+}
+
+
+function newBook(title,author,pages,read){
+
+    const testBook = new Book(title,author,pages,read)
+    myLibrary.push(testBook)
+
+for(let i = 0; i<myLibrary.length; i++){
+
+    bookSpace.innerHTML += `<div class="bookInfoBox">
+    <p class="fs-3" id="titleSpace">${myLibrary[i].title} </p>
+    <p id="authorSpace">Author: ${myLibrary[i].author} </p>
+    <p id="numOfPagesSpace">Number of Pages:  ${myLibrary[i].pages} </p>
+    <p>Status:Not read </p>
+    <button id="editInfoBtn" class="btn btn-secondary" type="submit">Edit Info</button>
+                        <button id="removeBook" class="btn btn-danger">Remove</button>
+                        </div>`;
+
+
+
+    console.log(testBook) 
+}
+}
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    bookSpace.innerHTML = ""
+    newBook(titleForm.value,authorForm.value,numOfPagesForm.value,'not yet')
+
+ 
+   
+})
+
+
+
+
+
+
 
 myLibrary.push({
     title: '48 Laws of Power',
@@ -51,117 +104,14 @@ myLibrary.push({
     author: ' Scott Fitzgerald',
     pages: 935,
     read:true
-},{
-    title:'The Hobbit', 
-    author:'J.R.R.', 
-    pages: 295, 
-    read: true})
-
-
-
-
-function loopThroughArray(){
-
-    // let removeBook = document.getElementById('removeBook')
-    // function removeBookFn(){
-    //     bookSpace.innerHTML += `<div class="bookInfoBox">hell</div>`;
-    // }
-    
-    // removeBook.addEventListener('click', removeBookFn)
-    
-
-  
-    let readStatusStr = this.read ? "read" : "not read yet";
-    
-    for(let i = 0; i<myLibrary.length; i++){
-
-        bookSpace.innerHTML += `<div class="bookInfoBox">
-        <p class="fs-3" id="title">${myLibrary[i].title} </p>
-        <p>Author: ${myLibrary[i].author} </p>
-        <p>Number of Pages:  ${myLibrary[i].pages} </p>
-        <p>Status: ${readStatusStr} </p>
-    
-        <button id="editInfoBtn" class="btn btn-secondary" type="submit">Edit Info</button>
-        <button id="removeBook" class="btn btn-danger">Remove</button>
-        </div>
-    
-    `
-   
-    
-
-}
-}
-
-loopThroughArray()
+ })
 
 
 
 
 
-function addNewBook(){
-        forNewModels.innerHTML +=   `<dialog class="theModel">
-        <p class="fs-3">Title: 
-            <input class="form-control" type="text" name="title" placeholder="Book title">
-        </p>
-        <p>Author:  
-            <input class="form-control" type="text" name="Author">           
-        </p>
-        <p>Number of Pages:
-            <input class="form-control" type="number" name="Pages">
-        </p>
-        <p>Status: 
-            <label class="form-label">Have you read?</label><br>
-            Yes <input type="checkbox" class="form-check-input">
-            No <input type="checkbox" class="form-check-input">
-        </p>
-                 
-        <button id="addToLibrary" class="btn btn-primary" type="submit">Add to Library</button>
-    </dialog>
-             `
-
-    }
-
-    
-
-    function displayModel(){
-    forNewModels.innerHTML +=  
-    `<div class="theModel">
-    <p class="fs-3">Title: ${this.title}</p>
-    <p>Author: ${this.author}</p>
-    <p>Number of Pages: ${this.pages}</p>
-    <p>Status: ${this.read}</p>
-
-    <button id="editInfoBtn" class="btn btn-secondary" type="submit">Edit Info</button>
-    <button class="btn btn-danger">Remove</button>
-    </div>
-
-`
-}
-
-
-function editButton(){
-    theModel.innerHTML =  
-    `
-    <p class="fs-3">Title: 
-    <input class="form-control" type="text" name="title" placeholder="Book title" >
-    </p>
-         <p>Author:  
-         <input class="form-control" type="text" name="Author" >           
-         </p>
-         <p>Number of Pages:
-         <input  class="form-control"type="number" name="Pages"></p>
-         <p>Status: 
-         <label class="form-label">Have you read?</label><br>
-         Yes <input type="checkbox" class="form-check-input">
-         No <input type="checkbox" class="form-check-input">
-         </p>
-         
-         <button id="editInfoBtn" class="btn btn-primary" type="submit">Edit Book</button>
-         `
-}
-
-
-
-
-
-
+ function creation(){
+    const newDiv = document.createElement("div")
+    document.body.appendChild(newDiv)
+ }
+ creation()

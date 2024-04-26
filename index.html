@@ -9,37 +9,56 @@
 </head>
 
 <body>
-    <h1>My Book Library</h1>
-    <div class="container-fluild" style="padding: 5px;">
-       
+  
+    <div class="container-fluild">
+         <h1 class="rounded-bottom-2 ">My Book Library</h1>
         <div class="row">
-            <div class="col-sm-5">
-                <button  class="btn btn-outline-secondary" id="AddNewBook" type="button">Add new Book</button>
-
+            <div class="col">
+                <button  class="btn btn-primary m-2" id="AddNewBook" >Add new Book</button>
+                <button class="btn btn-danger" id="removeAllBooks" type="reset">Remove All Books from Library</button>
             </div>
         </div>
 
         <div class="row">
+            <div class="col-2">
+                <form id="form">
+                    <label class="form-label">Book Title</label>
+                    <input class="form-control"  type="text" name="title" id="titleForm" required>
+            
+                    <label class="form-label">Author</label>
+                    <input class="form-control" type="text" name="author" id="authorForm" required>
+            
+                    <label class="form-label">Number Of Pages</label> 
+                    <input class="form-control" type="number" name="numPages" id="numOfPagesForm"  required>
+            
+                    <label class="form-check-label">Yes/No</label>
+                   <div class="form-check form-switch">
+                    <input type="checkbox" class="form-check-input" id="switchStatus">
+                   </div>
+            
+                   <button class="btn btn-primary" type="submit" id="addBookFormBtn">Add Book</button>
+            
+                </form>  
+            </div>
+
             <div class="col">
                 <div class="bookSpace"> 
 
-
                     <div class="bookInfoBox">
-                        <p class="fs-3" id="title">Title </p>
-                        <p>Author: Mansur </p>
-                        <p>Number of Pages:  2004 </p>
-                        <p>Status: Yes </p>
-                    
+                        <p class="fs-3" id="title"> </p>
+                        <p>Author:  </p>
+                        <p>Number of Pages:   </p>
+                        <p>Status:Not read </p>
                         <button id="editInfoBtn" class="btn btn-secondary" type="submit">Edit Info</button>
                         <button id="removeBook" class="btn btn-danger">Remove</button>
-                        </div>
-
-                </div>
-                <button  class="btn btn-outline-secondary" id="AddNewBook" type="button">Add new Book</button>
+                    </div>
+                    
+                
             </div>
         </div>
-    </div>
+  
 </div>
+
 
 
     

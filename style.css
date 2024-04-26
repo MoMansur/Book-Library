@@ -5,12 +5,10 @@ body{
 }
 
 .container-fluild{
-    
+  
 }
 
-.col{
-   
-}
+
 
 form{
     background-color: brown;
@@ -22,11 +20,11 @@ form{
  }
 
 
+
 h1{
     border-bottom: 1px solid white;
     text-align: center;
     background-color: brown;
-    border-radius: 10px;
     height: 80px;
     color: white;
     line-height: 80px;
@@ -39,7 +37,9 @@ h1{
 }
 
 .bookSpace{
+
 display: inline-flex;
+position: relative;
 margin: 10px;
 }
 
