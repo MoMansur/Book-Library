@@ -151,7 +151,19 @@
 
 
 
+    // bookSpace.innerHTML += `<div class="bookInfoBox">
+    // <p class="fs-3" id="titleSpace">${myLibrary[i].title} </p>
+    // <p id="authorSpace">Author: ${myLibrary[i].author} </p>
+    // <p id="numOfPagesSpace">Number of Pages:  ${myLibrary[i].pages} </p>
+    // <p>Status:Not read </p>
+    // <button id="editInfoBtn" class="btn btn-secondary" type="submit">Edit Info</button>
+    //                     <button id="removeBook" class="btn btn-danger">Remove</button>
+    //                     </div>`;
 
+
+   
+
+    
 
 
 

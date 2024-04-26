@@ -6,7 +6,11 @@ const bookInfoBox = document.querySelector('.bookInfoBox')
 const addNewBookBtn = document.getElementById('AddNewBook')
  const removeAllBooks = document.getElementById('removeAllBooks')
 
-
+//  const titleSpace = document.getElementById('titleSpace')
+//  const authorSpace = document.getElementById('authorSpace')
+//  const numOfPagesSpace = document.getElementById('numOfPagesSpace')
+ 
+ 
  const switchStatus = document.getElementById('switchStatus')
 
 
@@ -18,7 +22,6 @@ const addNewBookBtn = document.getElementById('AddNewBook')
  
  const addBookFormBtn = document.getElementById('addBookFormBtn')
  
- const editInfoBtn = document.getElementById('editInfoBtn')
 
 
 
@@ -40,36 +43,73 @@ function addBookToLibrary() {
 }
 
 
-const titleSpace = document.getElementById('titleSpace')
-const authorSpace = document.getElementById('authorSpace')
-const numOfPagesSpace = document.getElementById('numOfPagesSpace')
-
-
-function test(){
-    console.log('I ahve been clicked')
-}
-
 
 function newBook(title,author,pages,read){
 
     const testBook = new Book(title,author,pages,read)
     myLibrary.push(testBook)
 
+    const editInfoBtn = document.getElementById('editInfoBtn')
+
+
 for(let i = 0; i<myLibrary.length; i++){
+        const newModel = document.createElement("div")
+        newModel.className = "bookInfoBox"
+    
+        const pForTitle =document.createElement("p")
+        pForTitle.className = "fs-3";
+        pForTitle.textContent = myLibrary[i].title
+    
+        const pForAuthor = document.createElement("p")
+        pForAuthor.textContent = `Author: ${myLibrary[i].author}`
+    
+        const pForPages = document.createElement("p")
+        pForPages.textContent = `Num of Pages: ${myLibrary[i].pages}`
+    
+        const pForStatus = document.createElement("p")
+        pForStatus.textContent = `Have you read?: ${read}`
+    
+    
+        const statusYes =document.createElement("input")
+        statusYes.className = "form-check form-switch";
+        statusYes.type = "checkbox"
+        statusYes.role = "switch"
+     
+    
+        const btnForEdit = document.createElement("button")
+        btnForEdit.className = "btn btn-secondary m-1"
+        btnForEdit.type = "submit";
+        btnForEdit.id = "editInfoBtn"
+        btnForEdit.textContent = "Edit Info"
+    
+        const btnForRemove =document.createElement("button")
+        btnForRemove.className = "btn btn-danger"
+        btnForRemove.type = "button";
+        btnForRemove.textContent = "Remove Book"
+       
+    
+    
+    bookSpace.appendChild(newModel)
+    
+    newModel.appendChild(pForTitle)
+    newModel.appendChild(pForAuthor)
+    newModel.appendChild(pForPages)
+    newModel.appendChild(pForStatus)
+    
+    newModel.appendChild(statusYes)
+    
+    newModel.appendChild(btnForEdit)
+    newModel.appendChild(btnForRemove)
+    
 
-    bookSpace.innerHTML += `<div class="bookInfoBox">
-    <p class="fs-3" id="titleSpace">${myLibrary[i].title} </p>
-    <p id="authorSpace">Author: ${myLibrary[i].author} </p>
-    <p id="numOfPagesSpace">Number of Pages:  ${myLibrary[i].pages} </p>
-    <p>Status:Not read </p>
-    <button id="editInfoBtn" class="btn btn-secondary" type="submit">Edit Info</button>
-                        <button id="removeBook" class="btn btn-danger">Remove</button>
-                        </div>`;
-
-
-
-    console.log(testBook) 
+    editInfoBtn.addEventListener('click', ()=>{
+        console.log('I was just clicked')
+    })
+    
+ 
 }
+
+
 }
 
 form.addEventListener('submit', (e) => {
@@ -77,13 +117,8 @@ form.addEventListener('submit', (e) => {
 
     bookSpace.innerHTML = ""
     newBook(titleForm.value,authorForm.value,numOfPagesForm.value,'not yet')
-
- 
-   
+  
 })
-
-
-
 
 
 
@@ -109,9 +144,3 @@ myLibrary.push({
 
 
 
-
- function creation(){
-    const newDiv = document.createElement("div")
-    document.body.appendChild(newDiv)
- }
- creation()
