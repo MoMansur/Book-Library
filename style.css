@@ -1,16 +1,10 @@
 
 body{
-    background-color: burlywood;
-    
+    background: rgb(121,22,5);
+background: linear-gradient(90deg, rgba(121,22,5,1) 27%, rgba(195,163,120,1) 27%);
 }
 
 
-
-form{
-    background-color: brown;
-    padding: 20px;
-    border-radius: 20px;
-}
  label{
     color: white;
  }
@@ -25,13 +19,45 @@ h1{
     color: white;
     line-height: 80px;
     
+    width: 100%;
+   
+}
+
+form{
+ position: fixed;
+ width: 385px;
+ background-color: brown;
+ padding: 20px;
+ border-radius: 20px;
+ top: 100px;
 }
 
 
+.Data{
+    color: white;
+    background-color: brown;
+    border-radius: 20px;
+    width: 385px;
+    height: 210px;
+    margin-top: 15px;
+    padding: 20px;
+    position: fixed;
+    top: 470px;
+}
 
+
+#addBookFormBtn{
+    width: 100%;
+}
+.row{
+
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+
+}
 .bookSpace{
-
-display: inline-flex;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
 }
 
 .bookInfoBox{
@@ -39,7 +65,7 @@ background-color: brown;
 border-radius:  20px;
 padding: 10px;
 height: auto;
-width: 300px;
+width: 350px;
 color: white;
 margin: 10px;
  }

@@ -69,6 +69,9 @@ function displayer(){
 
 
 for(let i = 0; i<myLibrary.length; i++){
+
+
+    //DOM MANIPULATION
     const newModel = document.createElement("div")
     newModel.className = "bookInfoBox"
     newModel.setAttribute(`data-index`, i)
@@ -137,7 +140,7 @@ for(let i = 0; i<myLibrary.length; i++){
     
 
     status.textContent = "Change Read Status"
-    status.style.width= "17.2rem"
+    status.style.width= "20rem"
     status.style.marginLeft= "5px"
 
     
@@ -146,7 +149,7 @@ for(let i = 0; i<myLibrary.length; i++){
     btnForEdit.className = "btn btn-primary m-1"
     btnForEdit.type = "submit";
     btnForEdit.id = "editInfoBtn"
-    btnForEdit.style.width= "8.5rem"
+    btnForEdit.style.width= "9.9rem"
 
     btnForEdit.textContent = "Edit Info"
 
@@ -154,7 +157,7 @@ for(let i = 0; i<myLibrary.length; i++){
     btnForRemove.className = "btn btn-danger"
     btnForRemove.type = "button";
     btnForRemove.id="removeBook"
-    btnForRemove.style.width= "8.5rem"
+    btnForRemove.style.width= "9.89rem"
     btnForRemove.textContent = "Remove Book"
 
     //ADDER 
@@ -332,13 +335,14 @@ form.addEventListener('submit', (e) => {
         addBookToLibrary(titleForm.value,authorForm.value,numOfPagesForm.value, true)
         // forFormCall(yesRadio)
         displayer()
+       
     }else{
         addBookToLibrary(titleForm.value,authorForm.value,numOfPagesForm.value, false)
         // forFormCall(yesRadio)
         displayer()
     }
    
-   
+   form.reset()
     // newBook(titleForm.value,authorForm.value,numOfPagesForm.value, 'read')
     // displayer()
     // console.log(myLibrary)
