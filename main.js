@@ -66,10 +66,8 @@ myLibrary.push({
 
 
 function displayer(){
-
-
-for(let i = 0; i<myLibrary.length; i++){
-
+    
+    for(let i = 0; i<myLibrary.length; i++){
 
     //DOM MANIPULATION
     const newModel = document.createElement("div")
@@ -117,18 +115,13 @@ for(let i = 0; i<myLibrary.length; i++){
         statusAnswer.textContent = 'Yes'
         statusAnswer.style.backgroundColor="green"
 
-      
-
-       
         status.addEventListener('click', ()=>{
             switcher()
-        })
-        
+        })        
     }else{
         statusAnswer.textContent = 'No'
         statusAnswer.style.backgroundColor="red"
 
-     
         status.addEventListener('click', ()=>{
             switcher()
         })
@@ -137,13 +130,9 @@ for(let i = 0; i<myLibrary.length; i++){
     //HAVE YOU READ?
        
         pForStatus.appendChild(statusAnswer)
-    
-
     status.textContent = "Change Read Status"
     status.style.width= "20rem"
     status.style.marginLeft= "5px"
-
-    
 
     const btnForEdit = document.createElement("button")
     btnForEdit.className = "btn btn-primary m-1"
@@ -160,53 +149,29 @@ for(let i = 0; i<myLibrary.length; i++){
     btnForRemove.style.width= "9.89rem"
     btnForRemove.textContent = "Remove Book"
 
-    //ADDER 
 
-    bookSpace.appendChild(newModel)
-    newModel.appendChild(pForTitle)
-    newModel.appendChild(pForAuthor)
-    newModel.appendChild(pForPages)
-    newModel.appendChild(pForStatus)
-    newModel.appendChild(status)
-
-    newModel.appendChild(btnForEdit)
-    newModel.appendChild(btnForRemove) 
-
-
-
+//REMOVER
     function replacer(theModel){
-        newModel.remove(theModel)
-       
-        
+        newModel.remove(theModel) 
     }
 
-    //EDITTER items
-    const editForm=document.createElement('form')
-    editForm.className = "form"
-    editForm.id = "form"
-
-    let tester ='called'
+    //EDIT FORM
         const titleInputED =document.createElement("input")
         titleInputED.className = "form-control mb-2";
         titleInputED.placeholder = `Book Title`
         titleInputED.type = "Text"
 
-        titleInputED.textContent = tester
-    
         const authorInputED = document.createElement("input")
         authorInputED.className = "form-control mb-2"
         authorInputED.placeholder = "Change Author"
         authorInputED.type= 'text'
         
-   
-    
         const pagesInputED = document.createElement("input")
         pagesInputED.className = "form-control mb-2"
         pagesInputED.placeholder="Number Of Pages"
         pagesInputED.type = "number"
 
-        pagesInputED.textContent = `Num of Pages: ${tester}`
-
+    
         const btnForEditInp = document.createElement("button")
         btnForEditInp.className = "btn btn-primary m-1"
         btnForEditInp.style.width = "9rem"
@@ -222,26 +187,40 @@ for(let i = 0; i<myLibrary.length; i++){
         btnForRemoveInp.textContent = "Delete Book"
 
    
+   
+        const pForTitleEdit =document.createElement("p")
+        pForTitleEdit.className = "fs-3";
+        pForTitleEdit.textContent = 'Update your Book'
+
+
+
     
-
 function editPopUpModel(){
-    const pForTitle =document.createElement("p")
-    pForTitle.className = "fs-3";
-    pForTitle.textContent = 'Update your Book'
+   
+newModel.appendChild(pForTitleEdit)
 
-    newModel.appendChild(pForTitle)
-newModel.appendChild(editForm)
 newModel.appendChild(titleInputED)
 newModel.appendChild(authorInputED)
 newModel.appendChild(pagesInputED)
+
+
 newModel.appendChild(btnForEditInp)
 newModel.appendChild(btnForRemoveInp)
 
 
 }
 
+function editItemRemoveNew(){
+    newModel.removeChild(pForTitleEdit)
+
+    newModel.removeChild(titleInputED)
+    newModel.removeChild(authorInputED)
+    newModel.removeChild(pagesInputED)
+    newModel.removeChild(btnForEditInp)
+    newModel.removeChild(btnForRemoveInp)
+}
+
 function editNewView(){
-  
     newModel.removeChild(btnForEdit)
     newModel.removeChild(btnForRemove)
     newModel.removeChild(pForTitle)
@@ -263,22 +242,13 @@ btnForEdit.addEventListener('click', ()=>{
 btnForRemove.addEventListener('click', (e)=>{
     const index = parseInt(newModel.getAttribute("data-index"));
     console.log(index)
-
     var confirmToRemove = confirm('Are you sure you want to remove this book')
-
     if(confirmToRemove){
         myLibrary.splice(index, 1);
         replacer(newModel)
     }else{
         alert('Cancelled')
     }
-   
-
-   
-    console.log(myLibrary)
-
-
-  
 })
 
 //REMOVE BOTTON FROM EDIT OPTIONS
@@ -295,134 +265,81 @@ btnForRemoveInp.addEventListener('click', (e)=>{
     }
 })
 
+bookSpace.appendChild(newModel)
+    //ADDER 
+    function appender(){
+      
+        newModel.appendChild(pForTitle)
+        newModel.appendChild(pForAuthor)
+        newModel.appendChild(pForPages)
+        newModel.appendChild(pForStatus)
+        newModel.appendChild(status)
+        newModel.appendChild(btnForEdit)
+        newModel.appendChild(btnForRemove) 
+    }
 
+appender()
+
+
+function editProcess(){
+    btnForEditInp.addEventListener('click', (e)=>{
+
+        pForTitle.textContent = titleInputED.value
+        pForAuthor.textContent =`Author: ${authorInputED.value}`
+        pForPages.textContent = `Num Of Pages: ${pagesInputED.value}`
+         
+        const index = parseInt(newModel.getAttribute("data-index"));       
+        myLibrary[index].title = titleInputED.value
+        myLibrary[index].author = authorInputED.value
+        myLibrary[index].pages = pagesInputED.value  
+
+        appender()
+        editItemRemoveNew()
+    })
 }
+editProcess()
 
+function myLibraryInfo(){
+    const numTotalBooks = document.getElementById('numTotalBooks')
+  
+  
+    numTotalBooks.innerHTML = `Total Books: ${i}`
+  
 }
+myLibraryInfo()
+}
+//OUT OF LOOP
+}
+//OUT OF DISPLAY()
 
 
-// function forFormCall(radio, ){
 
-//     const pForStatus = document.getElementById('pStatusID')
-//     if(radio.checked){
-//         let statusAnswer = document.createElement('span')
-//         statusAnswer.textContent = 'Yes'
-//         statusAnswer.style.backgroundColor="green"
+function refresher(){
+    bookSpace.innerHTML = ""
+ displayer()
+}
+refresher()
 
-//         pForStatus.appendChild(statusAnswer)
-//     }else{
-//         let statusAnswer = document.createElement('span')
-//         statusAnswer.textContent = 'NO'
-//         statusAnswer.style.backgroundColor="red"
-//         pForStatus.appendChild(statusAnswer)
-//     }
-// }
-displayer()
 
 //FORM DATA
-
 const yesRadio = document.getElementById('yesRadio')
 const noRadio = document.getElementById('noRadio')
 
 form.addEventListener('submit', (e) => {
     e.preventDefault()
 
-
-    bookSpace.innerHTML = ""
-    
-    
     if(yesRadio.checked){
         addBookToLibrary(titleForm.value,authorForm.value,numOfPagesForm.value, true)
         // forFormCall(yesRadio)
-        displayer()
-       
+        refresher()
     }else{
         addBookToLibrary(titleForm.value,authorForm.value,numOfPagesForm.value, false)
         // forFormCall(yesRadio)
-        displayer()
+        refresher()
     }
-   
-   form.reset()
-    // newBook(titleForm.value,authorForm.value,numOfPagesForm.value, 'read')
-    // displayer()
-    // console.log(myLibrary)
-  
+   form.reset()  
 })
 
 
 
 
-
-
-function editButton(newTitle, newAuthor, newPage){
-    const newModel = document.createElement("div")
-        newModel.className = "bookInfoBox"
-        
-    const editForm=document.createElement('form')
-    editForm.className = "form"
-
-        const titleInputED =document.createElement("input")
-        titleInputED.className = "form-control mb-2";
-        titleInputED.placeholder = `Book Title`
-        titleInputED.type = "Text"
-
-        titleInputED.textContent = newTitle
-    
-        const authorInputED = document.createElement("input")
-        authorInputED.className = "form-control mb-2"
-        authorInputED.placeholder = "Change Author"
-        authorInputED.type= 'text'
-        
-        authorInputED.textContent = `Author: ${newAuthor}`
-    
-        const pagesInputED = document.createElement("input")
-        pagesInputED.className = "form-control mb-2"
-        pagesInputED.placeholder="Number Of Pages"
-        pagesInputED.type = "number"
-
-        pagesInputED.textContent = `Num of Pages: ${newPage}`
-    
-        const pForStatus = document.createElement("p")
-        pForStatus.textContent = `Have you read?: `
-    
-    
-        const statusYes =document.createElement("input")
-        statusYes.className = "form-check form-switch";
-        statusYes.type = "checkbox"
-        statusYes.role = "switch"
-     
-    
-        const btnForEditInp = document.createElement("button")
-        btnForEditInp.className = "btn btn-primary m-1"
-        btnForEditInp.style.width = "9rem"
-        btnForEditInp.style.float = "left"
-        btnForEditInp.type = "submit";
-        btnForEditInp.id = "editInfoBtn"
-        btnForEditInp.textContent = "Update Book"
-    
-        const btnForRemoveInp =document.createElement("button")
-        btnForRemoveInp.className = "btn btn-danger m-1"
-        btnForRemoveInp.type = "button";
-        btnForRemoveInp.id="removeBook"
-        btnForRemoveInp.textContent = "Delete Book"
-
-        bookSpace.appendChild(newModel)
-    
-        newModel.appendChild(editForm)
-
-    newModel.appendChild(titleInputED)
-    newModel.appendChild(authorInputED)
-    newModel.appendChild(pagesInputED)
-    newModel.appendChild(pForStatus)
-    
-    newModel.appendChild(statusYes)
-    
-    newModel.appendChild(btnForEditInp)
-    newModel.appendChild(btnForRemoveInp)
-  
-    
-    
-}
-
-
-// bookSpace.createElement('span')
