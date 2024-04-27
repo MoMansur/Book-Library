@@ -19,13 +19,13 @@
             <div class="col-3">
                 <form id="form">
                     <label class="form-label">Book Title</label>
-                    <input class="form-control"  type="text" name="title" id="titleForm" >
+                    <input class="form-control"  type="text" name="title" id="titleForm" required>
             
                     <label class="form-label">Author</label>
-                    <input class="form-control" type="text" name="author" id="authorForm" >
+                    <input class="form-control" type="text" name="author" id="authorForm" required>
             
                     <label class="form-label">Number Of Pages</label> 
-                    <input class="form-control" type="number" name="numPages" id="numOfPagesForm"  >
+                    <input class="form-control" type="number" name="numPages" id="numOfPagesForm"  required>
 
                     <div class="form-check">
                         <h6 class="text-start">
@@ -49,9 +49,8 @@
                 <div class="Data">
                     <h5>My Library Info</h5>
                     <ul>
-                        <li id="numTotalBooks">Total Books: </li>
-                        <li>Books Read: </li>
-                        <li>Unread Books</li>
+                        <li>Total Books: </li><span  id="numTotalBooks"></span>
+                      
                     </ul>
                 </div>
             </div>
@@ -64,14 +63,18 @@
 
                 
                 </div>
+                <footer>&copy; 2023 by Mo_Mansur 
+                    <a href="https://github.com/MoMansur" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+                        <img src="./img/github.png" alt="github">Mo_Mansur github</a>. All rights reserved
+                </footer>  
                 
         </div>
+        
   
 </div>
 
 
 
-    
 
     <script src="./main.js"></script>
 </body>
