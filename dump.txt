@@ -1,0 +1,31 @@
+    //APPPPPPPPPPPPPPPENDDDDDDDDDDDDDERRRRRRRRRRRRRRRRR
+
+        function  mainAppender(){
+            pForTitle.appender(newModel)
+            pForTitle.appender(newModel)
+            pForAuthor.appender(newModel)
+            pForPages.appender(newModel)
+            changestatus.appender(newModel)
+            pForStatus.appender(newModel)
+            statusAnswer.appender(newModel)
+        
+            const getstatusAnswer = statusAnswer.element
+          
+            //BUttons
+            btnForEdit.appender(newModel)
+            btnForRemove.appender(newModel)
+           }
+
+
+           
+        function editFromAppenders(){
+         pForTitleEdit.appender(getEditFrom)
+         authorInputED.appender(getEditFrom)
+         pagesInputED.appender(getEditFrom)
+         btnForEditInp.appender(getEditFrom)
+         btnForRemoveInp.appender(getEditFrom)
+        }
+
+        const editForm = factoryDom('form', 'form', 'editForm')
+
+const getEditFrom = editForm.element

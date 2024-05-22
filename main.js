@@ -1,4 +1,5 @@
 import DOMCreator from "./dom.js"
+import { factoryDom } from "./dom.js"
 
 //Book Library
 const bookSpace = document.querySelector('.bookSpace')
@@ -65,32 +66,29 @@ myLibrary.push({
 
 function displayer(){
     for(let i = 0; i<myLibrary.length; i++){
-        DOMCreator(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages,  i)
-
-
-    
-    function myLibraryInfo(){
-        const numTotalBooks = document.getElementById('numTotalBooks')
-        numTotalBooks.innerHTML = `${myLibrary.length} Books`
-        console.log(myLibrary[i].length)
-    }
-
+        DOMCreator(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages,  i, myLibrary[i].read)
+        myLibraryInfo(i)
 }
-//OUT OF LOOP
+
 }
 
 displayer()
 //OUT OF DISPLAY()
 
-function deleeFunc(i){
-    const index = parseInt(newModel.getAttribute("data-index"));
+function myLibraryInfo(index){
+    const numTotalBooks = document.getElementById('numTotalBooks')
+    numTotalBooks.innerHTML = `${myLibrary.length} Books`
+}
+
+export function deleteFunc(theDiv, i){
+    const index = parseInt(theDiv.getAttribute("data-index"));
            var confirmToRemove = confirm('Are you sure you want to remove this Card')
        
            if(confirmToRemove){
             myLibrary.splice(index[i], 1);
-               modelSpace.innerHTML = "";
-               myLibraryInfo()
-               console.log(dataArray)
+            bookSpace.innerHTML = "";
+               myLibraryInfo(i)
+            displayer()
            }else{
                alert('Cancelled')
            }
@@ -116,8 +114,7 @@ form.addEventListener('submit', (e) => {
     if(yesRadio.checked){
         addBookToLibrary(titleForm.value,authorForm.value,numOfPagesForm.value, true)
         refresher()
-        console.log(myLibrary.length)
-        console.log(myLibrary)
+    
        
     }else{
         addBookToLibrary(titleForm.value,authorForm.value,numOfPagesForm.value, false)
@@ -127,6 +124,15 @@ form.addEventListener('submit', (e) => {
    form.reset()  
 })
 
+const addBookBtn =factoryDom('button','addBook', "btn btn-primary" )
+addBookBtn.setInnerText('Add Book')
+addBookBtn.setWidth('200px', '90px')
+addBookBtn.appender(bookSpace)
+addBookBtn.otherCss('1px solid brown', '100px')
 
+console.dir(addBookBtn.element)
+
+    
+     
 
 
