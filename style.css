@@ -41,7 +41,6 @@ form{
     height: 210px;
     margin-top: 15px;
     padding: 20px;
-    position: fixed;
     top: 470px;
 }
 
@@ -70,12 +69,14 @@ color: white;
 margin: 10px;
  }
 
-.fs-3{
+#pForTitle{
     color: burlywood;
     border-bottom: 1px solid white;
     text-align: center;
     font-weight: 600;
- }
+    font-size: 1.8rem;
+ 
+}
  p{
     color: white;
     font-size: 1.2rem;
