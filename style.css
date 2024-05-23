@@ -1,5 +1,5 @@
 body {
-    background-color: burlywood;
+    background-color: rgb(206, 177, 138);
 }
 
 nav {
@@ -77,16 +77,6 @@ label {
     color: white;
 }
 
-.Data {
-    color: white;
-    background-color: brown;
-    border-radius: 20px;
-    width: 385px;
-    height: 210px;
-    margin-top: 15px;
-    padding: 20px;
-    top: 470px;
-}
 
 .bookSpace {
     display: flex;
@@ -102,7 +92,7 @@ label {
     padding: 10px;
     height: auto;
     min-width: 315px;
-    width: 315px;
+    width: 350px;
     max-width: 350px;
     color: white;
     margin: 10px;
@@ -168,9 +158,6 @@ h6 {
     color: white;
     margin: 10px;
     flex: 1;
-
-     
-    
 
     display: flex;
     flex-direction: column; /* Arrange items vertically */
