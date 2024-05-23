@@ -115,7 +115,8 @@ refreshPage(); // Refresh the page on initial load
 
 // Display the form to add a new book
 addBookNav.addEventListener('click', () => {
-    addBookNav.style.backgroundColor = 'orange';
+    addBookNav.style.color = 'brown';
+    addBookNav.style.backgroundColor = 'burlywood';
     let form = formCallDisplayer.form;
 
     bookSpace.append(form);
