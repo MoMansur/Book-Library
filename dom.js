@@ -52,14 +52,13 @@ const DOMCreator = ((title, author, pages, index, read) => {
     newModel.className = "bookInfoBox"
     bookSpace.append(newModel)
     newModel.setAttribute('data-index', index)
-    newModel.style.width = '150px'
 
     const pForTitle = factoryDom('p', 'pForTitle', "f3-3")
     const pForAuthor = factoryDom('p', 'pForAuthor', "pForAuthor")
     const pForPages = factoryDom('p', 'pForAuthor', "pForAuthor")
     const changestatus = factoryDom('button', 'statusBtn', "btn btn-success")
     changestatus.setInnerText("Change Read Status")
-    changestatus.setWidth('18.5rem')
+    changestatus.setWidth('20.3rem')
 
     const statusAnswer = factoryDom('span', 'statusBtn', "badge text-wrap")
     statusAnswer.setInnerText('')
@@ -92,12 +91,12 @@ const DOMCreator = ((title, author, pages, index, read) => {
     }
 
     const btnForEdit = factoryDom('button', 'editInfoBtn', "btn btn-primary m-1")
-    btnForEdit.setWidth("9.5rem")
+    btnForEdit.setWidth("10rem")
     btnForEdit.setElementAttribute('type', 'submit')
     btnForEdit.setInnerText("Edit Info")
 
     const btnForRemove = factoryDom('button', 'removeBook', "btn btn-danger")
-    btnForRemove.setWidth("8rem")
+    btnForRemove.setWidth("9.5rem")
     btnForRemove.setElementAttribute('type', 'button')
     btnForRemove.setInnerText("Remove Book")
 
@@ -129,12 +128,13 @@ const DOMCreator = ((title, author, pages, index, read) => {
     const btnForEditInp = factoryDom('button', 'editInfoBtn', "btn btn-primary m-1")
     btnForEditInp.setElementAttribute('type', 'submit')
     btnForEditInp.setInnerText("Update Book")
-    btnForEditInp.setWidth('18rem')
+    btnForEditInp.setWidth('20rem')
 
     const btnForRemoveInp = factoryDom('button', 'removeBook', "btn btn-danger m-1")
     btnForRemoveInp.setElementAttribute('type', 'button')
     btnForRemoveInp.setInnerText("Delete Book")
     btnForRemoveInp.setWidth('9rem')
+    btnForRemoveInp.element.style.float = 'right'
 
     // Remove book info edit form event listener
     btnForRemoveInp.element.addEventListener('click', () => {
@@ -218,6 +218,42 @@ const DOMCreator = ((title, author, pages, index, read) => {
 
 export default DOMCreator
 
+
+
+// Display the Add Book button and handle its functionality
+export const addbookBtnDisplay = () => {
+
+    const emptyModel = factoryDom('div', 'emptyModel', "emptyModel")
+    emptyModel.appender(bookSpace)
+    const addBookBtn = factoryDom('button', 'addBook', "addBookBtnInBookSpace")
+    addBookBtn.setInnerText('Add a new Book')
+    addBookBtn.setBgColor('rgb(79, 21, 21)')
+
+    
+        // addBookBtn.appender(emptyModel)
+    
+    emptyModel.element.append(addBookBtn.element)
+
+    function newFormHandler(){
+        let form = formCallDisplayer.form
+        bookSpace.removeChild(emptyModel.element)
+        bookSpace.append(form)
+     
+        form.scrollIntoView({ behavior: 'smooth' })
+    }
+
+    function removeEmptyModel(card){
+        card.removeChild(emptyModel.element)
+    }
+
+    addBookBtn.element.addEventListener('click', () => {
+        newFormHandler()
+    })
+
+ return{newFormHandler,removeEmptyModel}
+}
+
+
 // Factory function for form elements
 function formFactoryDom(tag, id, className) {
     const element = document.createElement(tag)
@@ -241,7 +277,6 @@ HTMLElement.prototype.setElementAttribute = function (attr, value) {
 // Create form element and handle its functionality
 export const formCallDisplayer = (() => {
     const form = formFactoryDom('form', 'form', '')
-
     // Create and append book title label and input
     const titleLabel = formFactoryDom('label', '', 'form-label')
     titleLabel.setInnerText('Book Title')
@@ -332,22 +367,6 @@ export const formCallDisplayer = (() => {
     return { form, yesRadio }
 })()
 
-// Display the Add Book button and handle its functionality
-export const addbookBtnDisplay = () => {
-    const addBookBtn = factoryDom('button', 'addBook', "btn btn-primary")
-    addBookBtn.setInnerText('Add Book')
-    addBookBtn.setWidth('200px', '50px')
-    addBookBtn.otherCss('1px solid brown', '50px')
-    addBookBtn.element.style.margin = '20px'
-    addBookBtn.appender(bookSpace)
 
-    addBookBtn.element.addEventListener('click', () => {
-        let form = formCallDisplayer.form
-        bookSpace.removeChild(addBookBtn.element)
-        bookSpace.append(form)
-        addBookBtn.appender(bookSpace)
-        form.scrollIntoView({ behavior: 'smooth' })
-    })
 
-    return { addBookBtn }
-}
+

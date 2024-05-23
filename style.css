@@ -90,6 +90,9 @@ label {
 .bookSpace {
     display: flex;
     flex-wrap: wrap;
+    margin: auto;
+
+    gap: 10px; /* Adjust the gap value as needed */
 }
 
 .bookInfoBox {
@@ -102,15 +105,20 @@ label {
     max-width: 350px;
     color: white;
     margin: 10px;
+    flex: 1;
 }
 
 @media (max-width: 600px) {
-    .bookInfoBox, .form {
-        width: 100%;
-        max-width: 370px;
+    .bookInfoBox {
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .form {
+        margin: auto;
     }
 }
 
@@ -135,6 +143,33 @@ h6 {
     color: white;
 }
 
+.addBookBtnInBookSpace{
+    color: burlywood;
+    border: 1px solid burlywood;
+    height: 50px;
+    border-radius: 10px;
+    width: 300px;
+
+}
+
+
+.emptyModel{
+    background-color: brown;
+    border-radius: 20px;
+    padding: 10px;
+    height: auto;
+    min-width: 315px;
+    width: 315px;
+    max-width: 350px;
+    color: white;
+    margin: 10px;
+    flex: 1;
+
+    display: flex;
+    justify-content: center; /* Horizontally center items */
+    align-items: center;
+ 
+}
 footer img {
     width: 20px;
     height: 20px;

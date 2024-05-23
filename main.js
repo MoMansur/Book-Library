@@ -41,7 +41,11 @@ function saveLibraryToStorage() {
 // Load library from localStorage
 function loadLibraryFromStorage() {
     const library = localStorage.getItem('myLibrary');
-    return library ? JSON.parse(library) : [];
+    if(library){
+       return JSON.parse(library)
+    } else{
+        return []
+    } 
 }
 
 // Display all books in the library
@@ -51,7 +55,7 @@ function displayer() {
         DOMCreator(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, i, myLibrary[i].read);
     }
     myLibraryInfo();
-    addbookBtnDisplay();
+   
 }
 
 // Display the initial set of books
@@ -65,10 +69,9 @@ function myLibraryInfo() {
 
 // Create and display an alert message
 function createAlert(message, duration) {
-    const alertDiv = factoryDom('div', 'alertDIV', 'alert alert-success pd-1');
+    const alertDiv = factoryDom('div', 'alertDIV', 'alert alert-warning pd-1');
     alertDiv.setElementAttribute('role', 'alert');
     alertDiv.setInnerText(message);
-
     alertDivDom.append(alertDiv.element);
 
     setTimeout(function() {
@@ -97,17 +100,21 @@ export function deleteFunc(theDiv) {
 function refreshPage() {
     bookSpace.innerHTML = "";
     displayer();
+    addbookBtnDisplay()
     myLibraryInfo();
 }
 
+addbookBtnDisplay()
+// const newFormHandler = 
 // Display the form to add a new book
 addBookNav.addEventListener('click', () => {
     addBookNav.style.color = 'brown';
     addBookNav.style.backgroundColor = 'burlywood';
-    let form = formCallDisplayer.form;
+    
+    addbookBtnDisplay().removeEmptyModel(bookSpace)
+    refreshPage()
+    addbookBtnDisplay().newFormHandler()
 
-    bookSpace.append(form);
-    form.scrollIntoView({ behavior: 'smooth' });
 });
 
 // Handle form submission to add a new book
