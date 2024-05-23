@@ -20,10 +20,6 @@ class Book {
         this.pages = pages;
         this.read = read;
     }
-
-    readStatus() {
-        return this.read ? "read" : "not read yet";
-    }
 }
 
 // Add a new book to the library array and save to localStorage
@@ -55,6 +51,7 @@ function displayer() {
         DOMCreator(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, i, myLibrary[i].read);
     }
     myLibraryInfo();
+    addbookBtnDisplay.appendNew()
    
 }
 
@@ -82,39 +79,38 @@ function createAlert(message, duration) {
 // Delete a book from the library
 export function deleteFunc(theDiv) {
     const indexAttribute = parseInt(theDiv.getAttribute("data-index"));
-    var confirmToRemove = confirm('Are you sure you want to remove this Book');
+    var confirmToRemove = confirm('Are you sure you want to remove this Book?');
 
     if (confirmToRemove) {
         myLibrary.splice(indexAttribute, 1);
         saveLibraryToStorage();
         refreshPage();
-        createAlert('Success: Book Deleted', 1500);
+        createAlert('Success: Book Deleted', 1000);
         myLibraryInfo();
     } else {
-        createAlert('Cancelled', 2000);
+        createAlert('Cancelled', 1000);
         refreshPage();
     }
 }
 
 // Refresh the book display
-function refreshPage() {
+export function refreshPage() {
     bookSpace.innerHTML = "";
-    displayer();
-    addbookBtnDisplay()
+    displayer(); 
     myLibraryInfo();
+
+    addBookNav.style.color = 'burlywood';
+    addBookNav.style.backgroundColor = 'rgb(79, 21, 21)';
 }
 
-addbookBtnDisplay()
-// const newFormHandler = 
+
 // Display the form to add a new book
 addBookNav.addEventListener('click', () => {
-    addBookNav.style.color = 'brown';
-    addBookNav.style.backgroundColor = 'burlywood';
-    
-    addbookBtnDisplay().removeEmptyModel(bookSpace)
-    refreshPage()
-    addbookBtnDisplay().newFormHandler()
+        addBookNav.style.color = 'brown';
+        addBookNav.style.backgroundColor = 'burlywood';
 
+        addbookBtnDisplay.removeEmptyModel
+        addbookBtnDisplay.newFormHandler()
 });
 
 // Handle form submission to add a new book
@@ -133,7 +129,8 @@ form.addEventListener('submit', (e) => {
 
     addBookToLibrary(title, author, pages, read);
     refreshPage();
-    createAlert('Book Added', 2000);
+    addbookBtnDisplay.appendNew()
+    createAlert('Book Added', 1000);
 
     form.reset();
 });
@@ -145,4 +142,32 @@ if (myLibrary.length === 0) {
     addBookToLibrary('The Great Gatsby', 'Scott Fitzgerald', 935, true);
     saveLibraryToStorage();
     refreshPage();
+}
+
+const deleteAllBtn = document.getElementById('deleteAllBtn');
+
+// Add event listener to the delete all button
+deleteAllBtn.addEventListener('click', deleteAllBooks);
+
+// Function to delete all books
+function deleteAllBooks() {
+   
+
+    // Clear local storage
+    var confirmToRemove = confirm('Are you sure you want to remove All Books?');
+
+    if (confirmToRemove) {
+        myLibrary.length = 0;
+        localStorage.removeItem('myLibrary');
+        createAlert('All books deleted', 1000);
+        refreshPage();
+    } else {
+        createAlert('Cancelled', 1000);
+        refreshPage();
+    }
+
+
+   
+
+   
 }

@@ -1,5 +1,5 @@
 import { deleteFunc } from "./main.js"
-
+import { refreshPage } from "./main.js"
 // Book Library
 const bookSpace = document.querySelector('.bookSpace')
 
@@ -58,7 +58,7 @@ const DOMCreator = ((title, author, pages, index, read) => {
     const pForPages = factoryDom('p', 'pForAuthor', "pForAuthor")
     const changestatus = factoryDom('button', 'statusBtn', "btn btn-success")
     changestatus.setInnerText("Change Read Status")
-    changestatus.setWidth('19rem')
+    changestatus.setWidth('20rem')
 
     const statusAnswer = factoryDom('span', 'statusBtn', "badge text-wrap")
     statusAnswer.setInnerText('')
@@ -91,12 +91,12 @@ const DOMCreator = ((title, author, pages, index, read) => {
     }
 
     const btnForEdit = factoryDom('button', 'editInfoBtn', "btn btn-primary m-1")
-    btnForEdit.setWidth("9.5rem")
+    btnForEdit.setWidth("10rem")
     btnForEdit.setElementAttribute('type', 'submit')
     btnForEdit.setInnerText("Edit Info")
 
     const btnForRemove = factoryDom('button', 'removeBook', "btn btn-danger")
-    btnForRemove.setWidth("9rem")
+    btnForRemove.setWidth("9.6rem")
     btnForRemove.setElementAttribute('type', 'button')
     btnForRemove.setInnerText("Remove Book")
 
@@ -128,7 +128,7 @@ const DOMCreator = ((title, author, pages, index, read) => {
     const btnForEditInp = factoryDom('button', 'editInfoBtn', "btn btn-primary m-1")
     btnForEditInp.setElementAttribute('type', 'submit')
     btnForEditInp.setInnerText("Update Book")
-    btnForEditInp.setWidth('19rem')
+    btnForEditInp.setWidth('20rem')
 
     const btnForRemoveInp = factoryDom('button', 'removeBook', "btn btn-danger m-1")
     btnForRemoveInp.setElementAttribute('type', 'button')
@@ -219,39 +219,6 @@ const DOMCreator = ((title, author, pages, index, read) => {
 export default DOMCreator
 
 
-
-// Display the Add Book button and handle its functionality
-export const addbookBtnDisplay = () => {
-
-    const emptyModel = factoryDom('div', 'emptyModel', "emptyModel")
-    emptyModel.appender(bookSpace)
-    const addBookBtn = factoryDom('button', 'addBook', "addBookBtnInBookSpace")
-    addBookBtn.setInnerText('Add a new Book')
-    addBookBtn.setBgColor('rgb(79, 21, 21)')
-
-    
-        // addBookBtn.appender(emptyModel)
-    
-    emptyModel.element.append(addBookBtn.element)
-
-    function newFormHandler(){
-        let form = formCallDisplayer.form
-        bookSpace.removeChild(emptyModel.element)
-        bookSpace.append(form)
-     
-        form.scrollIntoView({ behavior: 'smooth' })
-    }
-
-    function removeEmptyModel(card){
-        card.removeChild(emptyModel.element)
-    }
-
-    addBookBtn.element.addEventListener('click', () => {
-        newFormHandler()
-    })
-
- return{newFormHandler,removeEmptyModel}
-}
 
 
 // Factory function for form elements
@@ -359,6 +326,7 @@ export const formCallDisplayer = (() => {
     cancelAddBtn.addEventListener('click', () => {
         bookSpace.removeChild(form)
         form.reset()
+        refreshPage()
     })
 
     // Append the form to the container
@@ -368,5 +336,47 @@ export const formCallDisplayer = (() => {
 })()
 
 
+
+// Display the Add Book button and handle its functionality
+export const addbookBtnDisplay = (() => {
+
+    const emptyModel = factoryDom('div', 'emptyModel', "emptyModel")
+   
+    const addBookBtn = factoryDom('button', 'addBook', "addBookBtnInBookSpace")
+    addBookBtn.setInnerText('Add a new Book')
+    addBookBtn.setBgColor('rgb(79, 21, 21)')
+
+    const deleteAllBooks = factoryDom('button', 'deleteAllBtn', "btn btn-danger")
+    deleteAllBooks.setInnerText('Delete All Books')
+    
+
+    
+        // addBookBtn.appender(emptyModel)
+     
+
+    function newFormHandler(){
+        let form = formCallDisplayer.form
+        emptyModel.element.remove()
+        bookSpace.append(form)
+     
+        form.scrollIntoView({ behavior: 'smooth' })
+    }
+
+    function removeEmptyModel(){
+        emptyModel.element.remove()
+    }
+
+    function appendNew(){
+        emptyModel.appender(bookSpace)
+        emptyModel.element.append(addBookBtn.element)
+        emptyModel.element.append(deleteAllBooks.element)
+    }
+
+    addBookBtn.element.addEventListener('click', () => {
+        newFormHandler()
+    })
+
+ return{emptyModel, newFormHandler,removeEmptyModel,appendNew}
+})()
 
 
