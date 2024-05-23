@@ -1,10 +1,9 @@
+WebLink: https://momansur.github.io/Book-Library/
+
 **Description:**
 The Book Library project is a web application built with HTML, CSS, and JavaScript. It serves as a virtual library where users can manage their collection of books. The project provides functionalities such as adding new books, removing existing ones, updating book details, and marking books as read or unread.
 
 **Key Features:**
-
-Functionalities:
-
 **Add Book:** Users can add new books to their library by providing details such as title, author, and number of pages.
 **Edit Book:** Users can edit existing book details, including title, author, and number of pages.
 **Delete Book:** Users can remove books from their library.
