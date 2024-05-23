@@ -9,66 +9,27 @@
 </head>
 
 <body>
-  <h1 class="rounded-bottom-2 ">My Book Library</h1>
+    <nav>
+        <span  id="numTotalBooks"></span>
+        <h1 class="rounded-bottom-2 ">Library</h1>
+        <button class="btn btn-primary" type="button" id="addBookNav">Add Book</button>
+    </nav>
+    <div class="alertDiv" id="row"></div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" id="container">
+       
          
- 
-
-        <div class="row">
-            <div class="col-3">
-                <form id="form">
-                    <label class="form-label">Book Title</label>
-                    <input class="form-control"  type="text" name="title" id="titleForm" required>
-            
-                    <label class="form-label">Author</label>
-                    <input class="form-control" type="text" name="author" id="authorForm" required>
-            
-                    <label class="form-label">Number Of Pages</label> 
-                    <input class="form-control" type="number" name="numPages" id="numOfPagesForm"  required>
-
-                    <div class="form-check">
-                        <h6 class="text-start">
-                           Have you Read the Book?</h6>
-
-                        <input id="yesRadio" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                         Yes
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input id="noRadio" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                        <label class="form-check-label" for="flexRadioDefault2">
-                          No
-                        </label>
-                      </div>
-            
-                   <button class="btn btn-primary" type="submit" id="addBookFormBtn">Add Book</button>
-            
-                </form>  
-                <div class="Data">
-                    <h5>My Library Info</h5>
-                    <ul>
-                        <li>Total Books: </li><span  id="numTotalBooks"></span>
-                      
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-10">
+        <div class="row" >
+            <!-- <div class="alert alert-success" role="alert" id="alertBox">
+                A simple primary alert—check it out!
+              </div> -->
                 <div class="bookSpace"> 
-
-                        
-                        
-
-                
                 </div>
-                <footer>&copy; 2023 by Mo_Mansur 
-                    <a href="https://github.com/MoMansur" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
-                        <img src="./img/github.png" alt="github">Mo_Mansur github</a>. All rights reserved
-                </footer>  
-                
         </div>
+        <footer>&copy; 2023 by Mo_Mansur 
+            <a href="https://github.com/MoMansur" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+                <img src="./img/github.png" alt="github">Mo_Mansur github</a>. All rights reserved
+        </footer>  
         
   
 </div>
@@ -76,6 +37,6 @@
 
 
 
-    <script src="./main.js"></script>
+    <script src="./main.js" type="module"></script>
 </body>
 </html>
