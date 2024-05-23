@@ -5,6 +5,8 @@ import { addbookBtnDisplay } from "./dom.js"
 
 
 const container = document.getElementById('container')
+const addBookNav = document.getElementById('addBookNav')
+
 const row = document.getElementById('row')
 //Book Library
 const bookSpace = document.querySelector('.bookSpace')
@@ -122,11 +124,14 @@ refreshPage()
 
 //FORM DATA
 
-const addBookNav = document.getElementById('addBookNav')
+addBookNav.style.backgroundColor='green'
 
 
 addBookNav.addEventListener('click', ()=>{
+
+    addBookNav.style.backgroundColor='orange'
     let form = formCallDisplayer.form
+
     bookSpace.append(form)
     form.scrollIntoView({ behavior: 'smooth' });
 })

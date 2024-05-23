@@ -395,7 +395,7 @@ export const addbookBtnDisplay = ()=>{
     const addBookBtn =factoryDom('button','addBook', "btn btn-primary" )
 
 addBookBtn.setInnerText('Add Book')
-addBookBtn.setWidth('auto', '90px')
+addBookBtn.setWidth('200px', '50px')
 addBookBtn.otherCss('1px solid brown', '50px', )
 addBookBtn.element.style.margin = '20px'
 
