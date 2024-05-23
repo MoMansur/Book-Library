@@ -75,8 +75,16 @@ form {
 
 label {
     color: white;
+    
 }
-
+#yesLable{
+    color: green;
+    margin-left: 10px;
+}
+#noLabel{
+    margin-left: 10px;
+    color: red;
+}
 
 
 .bookSpace {

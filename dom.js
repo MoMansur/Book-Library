@@ -58,7 +58,7 @@ const DOMCreator = ((title, author, pages, index, read) => {
     const pForPages = factoryDom('p', 'pForAuthor', "pForAuthor")
     const changestatus = factoryDom('button', 'statusBtn', "btn btn-success")
     changestatus.setInnerText("Change Read Status")
-    changestatus.setWidth('20rem')
+    changestatus.setWidth('19.8rem')
 
     const statusAnswer = factoryDom('span', 'statusBtn', "badge text-wrap")
     statusAnswer.setInnerText('')
@@ -96,7 +96,7 @@ const DOMCreator = ((title, author, pages, index, read) => {
     btnForEdit.setInnerText("Edit Info")
 
     const btnForRemove = factoryDom('button', 'removeBook', "btn btn-danger")
-    btnForRemove.setWidth("9.6rem")
+    btnForRemove.setWidth("9rem")
     btnForRemove.setElementAttribute('type', 'button')
     btnForRemove.setInnerText("Remove Book")
 
@@ -128,7 +128,7 @@ const DOMCreator = ((title, author, pages, index, read) => {
     const btnForEditInp = factoryDom('button', 'editInfoBtn', "btn btn-primary m-1")
     btnForEditInp.setElementAttribute('type', 'submit')
     btnForEditInp.setInnerText("Update Book")
-    btnForEditInp.setWidth('20rem')
+    btnForEditInp.setWidth('19.3rem')
 
     const btnForRemoveInp = factoryDom('button', 'removeBook', "btn btn-danger m-1")
     btnForRemoveInp.setElementAttribute('type', 'button')
@@ -290,7 +290,7 @@ export const formCallDisplayer = (() => {
     yesRadio.setElementAttribute('name', 'flexRadioDefault')
     formCheckDiv1.appendChild(yesRadio)
 
-    const yesLabel = formFactoryDom('label', '', 'form-check-label')
+    const yesLabel = formFactoryDom('label', 'yesLable', 'form-check-label')
     yesLabel.setElementAttribute('for', 'flexRadioDefault1')
     yesLabel.setInnerText('Yes')
     formCheckDiv1.appendChild(yesLabel)
@@ -304,7 +304,7 @@ export const formCallDisplayer = (() => {
     noRadio.setElementAttribute('checked', 'true')
     formCheckDiv2.appendChild(noRadio)
 
-    const noLabel = formFactoryDom('label', '', 'form-check-label')
+    const noLabel = formFactoryDom('label', 'noLabel', 'form-check-label')
     noLabel.setElementAttribute('for', 'flexRadioDefault2')
     noLabel.setInnerText('No')
     formCheckDiv2.appendChild(noLabel)
