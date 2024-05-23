@@ -58,18 +58,18 @@ myLibrary.push(
 function displayer() {
     for (let i = 0; i < myLibrary.length; i++) {
         DOMCreator(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, i, myLibrary[i].read);
-        myLibraryInfo(i);
     }
-    // from Dom,js
+    myLibraryInfo()
     addbookBtnDisplay();
 }
 
-displayer(); // Display the initial set of books
+// Display the initial set of books
+displayer(); 
 
 // Update the total number of books displayed
-function myLibraryInfo(index) {
+function myLibraryInfo() {
     const numTotalBooks = document.getElementById('numTotalBooks');
-
+   
     if (myLibrary.length === 0 || myLibrary.length === 1) {
         numTotalBooks.innerHTML = `${myLibrary.length} Book`;
     } else {
@@ -99,6 +99,7 @@ export function deleteFunc(theDiv) {
         myLibrary.splice(indexAttribute, 1);
         refreshPage();
         createAlert('Success: Book Deleted', 1500);
+        myLibraryInfo(i);
     } else {
         createAlert('Cancelled', 2000);
         refreshPage();
@@ -109,6 +110,7 @@ export function deleteFunc(theDiv) {
 function refreshPage() {
     bookSpace.innerHTML = "";
     displayer();
+    myLibraryInfo(i);
 }
 
 refreshPage(); // Refresh the page on initial load
