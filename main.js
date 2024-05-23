@@ -77,7 +77,13 @@ displayer()
 
 function myLibraryInfo(index){
     const numTotalBooks = document.getElementById('numTotalBooks')
-    numTotalBooks.innerHTML = `${myLibrary.length} Books`
+
+    if(myLibrary.length === 0 || myLibrary.length === 1){
+        numTotalBooks.innerHTML = `Total: ${myLibrary.length} Book`
+    }else{
+        numTotalBooks.innerHTML = `Total: ${myLibrary.length} Books`
+
+    }
 }
 
 export function deleteFunc(theDiv, i){

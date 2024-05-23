@@ -1,7 +1,10 @@
-
+*{
+    margin: 0px;
+}
 body{
-    background: rgb(121,22,5);
-background: linear-gradient(90deg, rgba(121,22,5,1) 27%, rgba(195,163,120,1) 27%);
+    /* background: rgb(121,22,5); */
+    background-color: burlywood;
+/* background: linear-gradient(90deg, rgba(121,22,5,1) 27%, rgba(195,163,120,1) 27%); */
 }
 
 
@@ -11,17 +14,58 @@ background: linear-gradient(90deg, rgba(121,22,5,1) 27%, rgba(195,163,120,1) 27%
 
 
 
-h1{
-    border-bottom: 1px solid white;
-    text-align: center;
+nav{
     background-color: brown;
+    display: inline-flex;
+  
     height: 80px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between; /* To evenly distribute the items */
+    align-items: center; /* To vertically center the items */
+    width: 99vw;
+    min-width: 100vw;
+    max-width: 99vw;
+    margin-bottom: 10px;
+    border-bottom: 1px solid white;
+
+}
+
+#numTotalBooks{
+    width: 12rem;
+    min-width: 8rem;
+    max-width: 20rem;
     color: white;
+    line-height: 30px;
+    font-weight: 600;
+}
+
+
+h1{
+    text-align: center;
+    height: 80px;
+    color: burlywood;
     line-height: 80px;
-    
-    width: 100%;
+    font-weight: bolder;
+   width: 30rem;
+   max-width: 30rem;
+   min-width: 20rem;
+
+
    
 }
+
+
+#addBookNav{
+    width: 12rem;
+    min-width: 8rem;
+    max-width: 20rem;
+}
+
+
+
 
 form{
  width: 385px;
@@ -48,14 +92,16 @@ form{
     width: 100%;
 }
 .row{
-
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-
+    /* display: flex;
+    flex-wrap: wrap;
+   */
+    /* display: grid;
+    grid-template-columns: 1fr 2fr; */
 }
 .bookSpace{
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+  
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .bookInfoBox{
