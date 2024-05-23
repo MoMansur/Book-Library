@@ -1,22 +1,16 @@
 import DOMCreator from "./dom.js"
 import { factoryDom } from "./dom.js"
+import { formCallDisplayer } from "./dom.js"
+import { addbookBtnDisplay } from "./dom.js"
 
+
+const container = document.getElementById('container')
+const row = document.getElementById('row')
 //Book Library
 const bookSpace = document.querySelector('.bookSpace')
-//Book Info
-const bookInfoBox = document.querySelector('.bookInfoBox')
-//Button
-const addNewBookBtn = document.getElementById('AddNewBook')
- const removeAllBooks = document.getElementById('removeAllBooks')
 
 
- 
- const switchStatus = document.getElementById('switchStatus')
 
-
- const titleForm = document.getElementById('titleForm')
- const authorForm = document.getElementById('authorForm')
- const numOfPagesForm = document.getElementById('numOfPagesForm')
  
  const form = document.getElementById('form')
  const addBookFormBtn = document.getElementById('addBookFormBtn')
@@ -67,8 +61,10 @@ myLibrary.push({
 function displayer(){
     for(let i = 0; i<myLibrary.length; i++){
         DOMCreator(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages,  i, myLibrary[i].read)
-        myLibraryInfo(i)
+        myLibraryInfo(i)       
 }
+//from Dom,js
+addbookBtnDisplay()
 
 }
 
@@ -86,59 +82,80 @@ function myLibraryInfo(index){
     }
 }
 
-export function deleteFunc(theDiv, i){
-    const index = parseInt(theDiv.getAttribute("data-index"));
-           var confirmToRemove = confirm('Are you sure you want to remove this Card')
+
+function createAlert(message, duration) {
+    const alertDiv = factoryDom('div', 'alertDIV', 'alert alert-success pd-1' )
+    alertDiv.setElementAttribute('role', 'alert');
+    alertDiv.setInnerText(message) 
+
+    row.append(alertDiv.element);
+
+    setTimeout(function() {
+        alertDiv.element.remove(); // Remove the alertDiv element after the specified duration
+    }, duration);
+}
+
+
+export function deleteFunc(theDiv){
+    const indexAttribute = parseInt(theDiv.getAttribute("data-index"));
+           var confirmToRemove = confirm('Are you sure you want to remove this Book')
        
            if(confirmToRemove){
-            myLibrary.splice(index[i], 1);
-            bookSpace.innerHTML = "";
-               myLibraryInfo(i)
-            displayer()
-           }else{
-               alert('Cancelled')
-           }
+            myLibrary.splice(indexAttribute, 1);
+            refreshPage()
+            createAlert('Success: Book Deleted', 2000);
+          
+           }else{           
+            createAlert('Cancelled', 2000); 
+            refreshPage()
+        }            
 
 }
 
 
-function refresher(){
+function refreshPage(){
     bookSpace.innerHTML = ""
  displayer()
-
  
 }
-refresher()
-
+refreshPage()
 
 //FORM DATA
-const yesRadio = document.getElementById('yesRadio')
-const noRadio = document.getElementById('noRadio')
+
+const addBookNav = document.getElementById('addBookNav')
+
+
+addBookNav.addEventListener('click', ()=>{
+    let form = formCallDisplayer.form
+    bookSpace.append(form)
+    form.scrollIntoView({ behavior: 'smooth' });
+})
+
+
+
 
 form.addEventListener('submit', (e) => {
     e.preventDefault()
+
+  const yesRadio = formCallDisplayer.yesRadio
+    
+   
+    console.log()
     if(yesRadio.checked){
         addBookToLibrary(titleForm.value,authorForm.value,numOfPagesForm.value, true)
-        refresher()
-    
+        
+        refreshPage()
+        createAlert('Book Added', 2000); 
        
     }else{
         addBookToLibrary(titleForm.value,authorForm.value,numOfPagesForm.value, false)
-        refresher()
-        console.log(myLibrary)
+        refreshPage()
+        createAlert('Book Added', 2000); 
+    
     }
    form.reset()  
 })
 
-const addBookBtn =factoryDom('button','addBook', "btn btn-primary" )
-addBookBtn.setInnerText('Add Book')
-addBookBtn.setWidth('200px', '90px')
-addBookBtn.appender(bookSpace)
-addBookBtn.otherCss('1px solid brown', '100px')
 
-console.dir(addBookBtn.element)
-
-    
-     
 
 

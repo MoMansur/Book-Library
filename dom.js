@@ -59,6 +59,7 @@ const DOMCreator = ((title, author, pages, index, read) =>{
   newModel.className = "bookInfoBox"
   bookSpace.append(newModel)
   newModel.setAttribute(`data-index`, index)
+  newModel.style.width = '150px'
  
 
 
@@ -71,7 +72,8 @@ const DOMCreator = ((title, author, pages, index, read) =>{
       
        const changestatus =factoryDom('button','statusBtn', "btn btn-success" )
        changestatus.setInnerText("Change Read Status")
-       changestatus.setWidth('20rem')
+       changestatus.setWidth('18.5rem')
+       
 
 
        const statusAnswer =factoryDom('span','statusBtn', "badge text-wrap" )
@@ -115,20 +117,20 @@ let countButtonClick = 0;
 
 
    const btnForEdit =factoryDom('button','editInfoBtn', "btn btn-primary m-1" )
-   btnForEdit.setWidth("9.9rem")
+   btnForEdit.setWidth("9.5rem")
    btnForEdit.setElementAttribute('type', 'submit')
    btnForEdit.setInnerText("Edit Info")
 
 
    const btnForRemove =factoryDom('button','removeBook', "btn btn-danger" )
-   btnForRemove.setWidth("9.89rem")
+   btnForRemove.setWidth("8rem")
    btnForRemove.setElementAttribute('type', 'button')
    btnForRemove.setInnerText("Remove Book")
 
 
    //EVENT LISTERNErs
    btnForRemove.element.addEventListener('click', ()=>{
-    deleteFunc(newModel, index)
+    deleteFunc(newModel)
     })
 
     btnForEdit.element.addEventListener('click', (e)=>{
@@ -157,13 +159,19 @@ let countButtonClick = 0;
     const btnForEditInp =factoryDom('button','editInfoBtn', "btn btn-primary m-1", )
     btnForEditInp.setElementAttribute('type', 'submit')
     btnForEditInp.setInnerText("Update Book")
-    btnForEditInp.setWidth('19rem')
+    btnForEditInp.setWidth('18rem')
 
         // btnForEditInp.style.float = "left"      
         const btnForRemoveInp = factoryDom('button','removeBook', "btn btn-danger m-1", )
         btnForRemoveInp.setElementAttribute('type', 'button')
         btnForRemoveInp.setInnerText("Delete Book")
         btnForRemoveInp.setWidth('9rem')
+
+
+        //EVENT LISTERNErs
+        btnForRemoveInp.element.addEventListener('click', ()=>{
+            deleteFunc(newModel, index)
+        })
 
         function editFromAppenders(){
            
@@ -247,6 +255,9 @@ let countButtonClick = 0;
             })
 
 
+      
+
+
 });
 
 
@@ -255,7 +266,152 @@ export default DOMCreator
 
 
 
+function formFactoryDom(tag, id, className) {
+    const element = document.createElement(tag);
+    if (id) element.id = id;
+    if (className) element.className = className;
+    return element;
+}
 
-// editProcess()
+// Set inner text for the element
+HTMLElement.prototype.setInnerText = function(text) {
+    this.textContent = text;
+};
+
+// Set attribute for the element
+HTMLElement.prototype.setElementAttribute = function(attr, value) {
+    if (value !== undefined) {
+        this.setAttribute(attr, value);
+    }
+};
 
 
+// Create form element
+
+export const formCallDisplayer = (()=>{
+
+    const form = formFactoryDom('form', 'form', '');
+
+    // Create and append book title label and input
+    const titleLabel = formFactoryDom('label', '', 'form-label');
+    titleLabel.setInnerText('Book Title');
+    form.appendChild(titleLabel);
+    
+    const titleInput = formFactoryDom('input', 'titleForm', 'form-control');
+    titleInput.setElementAttribute('type', 'text');
+    titleInput.setElementAttribute('name', 'title');
+    titleInput.setElementAttribute('required', 'true');
+    titleInput.setElementAttribute('max', 20);
+    form.appendChild(titleInput);
+    
+    // Create and append author label and input
+    const authorLabel = formFactoryDom('label', '', 'form-label');
+    authorLabel.setInnerText('Author');
+    form.appendChild(authorLabel);
+    
+    const authorInput = formFactoryDom('input', 'authorForm', 'form-control');
+    authorInput.setElementAttribute('type', 'text');
+    authorInput.setElementAttribute('name', 'author');
+    authorInput.setElementAttribute('required', 'true');
+    form.appendChild(authorInput);
+    
+    // Create and append number of pages label and input
+    const numPagesLabel = formFactoryDom('label', '', 'form-label');
+    numPagesLabel.setInnerText('Number Of Pages');
+    form.appendChild(numPagesLabel);
+    
+    const numPagesInput = formFactoryDom('input', 'numOfPagesForm', 'form-control');
+    numPagesInput.setElementAttribute('type', 'number');
+    numPagesInput.setElementAttribute('name', 'numPages');
+    numPagesInput.setElementAttribute('required', 'true');
+    form.appendChild(numPagesInput);
+    
+    // Create and append "Have you read the book?" section
+    const question = formFactoryDom('h6', '', 'text-start');
+    question.setInnerText('Have you Read the Book?');
+    form.appendChild(question);
+    
+ // Create and append first radio input and label
+const formCheckDiv1 = formFactoryDom('div', '', 'form-check-inline'); // Changed class to form-check-inline
+const yesRadio = formFactoryDom('input', 'yesRadio', 'form-check-input');
+yesRadio.setElementAttribute('type', 'radio');
+yesRadio.setElementAttribute('name', 'flexRadioDefault');
+
+formCheckDiv1.appendChild(yesRadio);
+
+const yesLabel = formFactoryDom('label', '', 'form-check-label');
+yesLabel.setElementAttribute('for', 'flexRadioDefault1');
+yesLabel.setInnerText('Yes');
+formCheckDiv1.appendChild(yesLabel);
+
+form.appendChild(formCheckDiv1);
+
+// Create and append second radio input and label
+const formCheckDiv2 = formFactoryDom('div', '', 'form-check-inline'); // Changed class to form-check-inline
+const noRadio = formFactoryDom('input', 'noRadio', 'form-check-input');
+noRadio.setElementAttribute('type', 'radio');
+noRadio.setElementAttribute('name', 'flexRadioDefault');
+noRadio.setElementAttribute('checked', 'true');
+formCheckDiv2.appendChild(noRadio);
+
+const noLabel = formFactoryDom('label', '', 'form-check-label');
+noLabel.setElementAttribute('for', 'flexRadioDefault2');
+noLabel.setInnerText('No');
+formCheckDiv2.appendChild(noLabel);
+
+form.appendChild(formCheckDiv2);
+    
+    // Create and append submit button
+    const submitButton = formFactoryDom('button', 'addBookFormBtn', 'btn btn-success');
+    submitButton.setElementAttribute('type', 'submit');
+    submitButton.setInnerText('Add Book');
+    submitButton.style.width = '11rem'
+    form.appendChild(submitButton);
+
+    const cancelAddBtn = formFactoryDom('button','cancelAdd', "btn btn-danger m-1", )
+    cancelAddBtn.setElementAttribute('type', 'button')
+    cancelAddBtn.setInnerText("Cancel")
+    cancelAddBtn.style.width = '5rem'
+
+    form.appendChild(cancelAddBtn);
+
+    cancelAddBtn.addEventListener('click', ()=>{
+       bookSpace.removeChild(form)
+       form.reset()
+    })
+    
+
+
+
+    // Append the form to the container
+    bookSpace.appendChild(form);
+
+
+return {form, yesRadio}
+})();
+
+
+export const addbookBtnDisplay = ()=>{
+    const addBookBtn =factoryDom('button','addBook', "btn btn-primary" )
+
+addBookBtn.setInnerText('Add Book')
+addBookBtn.setWidth('auto', '90px')
+addBookBtn.otherCss('1px solid brown', '50px', )
+addBookBtn.element.style.margin = '20px'
+
+addBookBtn.appender(bookSpace)
+
+
+
+addBookBtn.element.addEventListener('click', ()=>{
+    let form = formCallDisplayer.form
+
+    bookSpace.removeChild(addBookBtn.element)
+
+
+    bookSpace.append(form)
+    addBookBtn.appender(bookSpace)
+    form.scrollIntoView({ behavior: 'smooth' });
+})
+    return {addBookBtn}
+}
