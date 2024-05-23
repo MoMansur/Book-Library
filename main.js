@@ -110,7 +110,7 @@ export function deleteFunc(theDiv) {
 function refreshPage() {
     bookSpace.innerHTML = "";
     displayer();
-    myLibraryInfo(i);
+    myLibraryInfo();
 }
 
 refreshPage(); // Refresh the page on initial load
