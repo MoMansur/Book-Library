@@ -1,94 +1,82 @@
-
-body{
-    /* background: rgb(121,22,5); */
+body {
     background-color: burlywood;
-/* background: linear-gradient(90deg, rgba(121,22,5,1) 27%, rgba(195,163,120,1) 27%); */
-
 }
 
-nav{
-    
+nav {
     background-color: brown;
     display: flex;
-  
+    justify-content: space-between;
+    align-items: center;
     height: 80px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     padding: 10px;
-    display: flex;
-    justify-content: space-between; /* To evenly distribute the items */
-    align-items: center; /* To vertically center the items */
     width: 100%;
-   
     margin-bottom: 10px;
     border-bottom: 1px solid white;
-
     position: fixed;
-
-   
-
 }
 
-#numTotalBooks{
+#numTotalBooks {
     width: 150px;
-    min-width: 130px;
+    min-width: 100px;
     max-width: 200px;
-    color: white;
+    color: burlywood;
     line-height: 30px;
     font-weight: 600;
-
     border-radius: 10px;
     background-color: rgb(79, 21, 21);
-    margin-left: 5px;
-    padding: 10px;
     height: 50px;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.2rem;
 }
 
-
-h1{
+h1 {
     text-align: center;
     height: 80px;
     color: burlywood;
     line-height: 80px;
     font-weight: bolder;
     width: 350px;
-    /* min-width: 130px;
-    max-width: 200px; */
 }
 
-
-#addBookNav{
+#addBookNav {
     width: 150px;
-    min-width: 130px;
+    min-width: 100px;
     max-width: 200px;
+    height: 50px;
+    background-color: rgb(79, 21, 21);
+    color: burlywood;
+    font-weight: 600;
+    font-size: 1rem;
 
 }
 
-.container-fluid{
+.container-fluid {
     padding-top: 80px;
-
 }
-.alertDiv{
-    padding-top: 80px;
+
+.alertDiv {
     width: 100%;
     position: fixed;
 }
 
-
-form{
+form {
     min-width: 315px;
     width: 315px;
     max-width: 350px;
- background-color: brown;
- padding: 20px;
- border-radius: 20px;
- top: 100px;
+    background-color: brown;
+    padding: 20px;
+    border-radius: 20px;
+    top: 100px;
 }
 
-label{
+label {
     color: white;
 }
-.Data{
+
+.Data {
     color: white;
     background-color: brown;
     border-radius: 20px;
@@ -99,69 +87,61 @@ label{
     top: 470px;
 }
 
-
-
-.bookSpace{
+.bookSpace {
     display: flex;
     flex-wrap: wrap;
 }
 
-.bookInfoBox{
-background-color: brown;
-border-radius:  20px;
-padding: 10px;
-height: auto;
-min-width: 315px;
-width: 315px;
-max-width: 350px;
-color: white;
-margin: 10px;
+.bookInfoBox {
+    background-color: brown;
+    border-radius: 20px;
+    padding: 10px;
+    height: auto;
+    min-width: 315px;
+    width: 315px;
+    max-width: 350px;
+    color: white;
+    margin: 10px;
+}
 
- }
- @media (max-width: 600px) {
-    .bookInfoBox, .form{
-      width: 100%;
-      max-width: 370px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 10px;
+@media (max-width: 600px) {
+    .bookInfoBox, .form {
+        width: 100%;
+        max-width: 370px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
     }
-    
-  }
+}
 
-
-#pForTitle{
+#pForTitle {
     color: burlywood;
     border-bottom: 1px solid white;
     text-align: center;
     font-weight: 600;
     font-size: 1.8rem;
-
-    word-wrap: break-word; /* or */
+    word-wrap: break-word;
     overflow-wrap: break-word;
-
-    
- 
 }
- p{
+
+p {
     color: white;
-    font-weight:500;
+    font-weight: 500;
     font-size: 1.2rem;
     font-family: sans-serif;
+}
 
- }
- 
- h6{
+h6 {
     color: white;
- }
+}
 
-
- footer img {
+footer img {
     width: 20px;
     height: 20px;
     margin-left: 4px;
     margin-right: 4px;
 }
+
 footer {
     display: flex;
     justify-content: center;
