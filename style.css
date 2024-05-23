@@ -65,7 +65,7 @@ h1 {
 form {
   
     min-width: 315px;
-    width: 350px;
+    width: 340px;
     max-width: 350px;
     background-color: brown;
     padding: 20px;
@@ -92,7 +92,7 @@ label {
     padding: 10px;
     height: auto;
     min-width: 315px;
-    width: 350px;
+    width: 340px;
     max-width: 350px;
     color: white;
     margin: 10px;
@@ -114,7 +114,7 @@ label {
 }
 
 @media (max-width: 600px) {
-    .bookInfoBox, .emptyModel {
+    .bookInfoBox {
         margin: 10px;
        
         margin-left: auto;
@@ -150,7 +150,7 @@ h6 {
     padding: 10px;
     height: auto;
     min-width: 315px;
-    width: 315px;
+    width: 320px;
     max-width: 350px;
     color: white;
     margin: 10px;
