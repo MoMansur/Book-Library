@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(206, 177, 138);
+    background-color: burlywood;
 }
 
 nav {
@@ -63,20 +63,30 @@ h1 {
 }
 
 form {
-  
+    margin: 10px;
+    margin-left: 10px;
     min-width: 315px;
-    width: 340px;
+    width: 350px;
     max-width: 350px;
     background-color: brown;
     padding: 20px;
     border-radius: 20px;
-    flex: 1;
 }
 
 label {
     color: white;
 }
 
+.Data {
+    color: white;
+    background-color: brown;
+    border-radius: 20px;
+    width: 385px;
+    height: 210px;
+    margin-top: 15px;
+    padding: 20px;
+    top: 470px;
+}
 
 .bookSpace {
     display: flex;
@@ -92,7 +102,7 @@ label {
     padding: 10px;
     height: auto;
     min-width: 315px;
-    width: 340px;
+    width: 315px;
     max-width: 350px;
     color: white;
     margin: 10px;
@@ -100,29 +110,17 @@ label {
 }
 
 @media (max-width: 600px) {
-    .bookSpace {
-        display: inline-block;
-        margin: auto;
-    }
-}
-
-@media (max-width: 600px) {
-    form {
-        margin: auto;
-     
-    }
-}
-
-@media (max-width: 600px) {
     .bookInfoBox {
-        margin: 10px;
-       
-        margin-left: auto;
-        margin-right: auto;
-
+        margin: auto;
     }
 }
 
+@media (max-width: 600px) {
+    .form {
+        margin: auto;
+        margin-left: 30px;
+    }
+}
 
 #pForTitle {
     color: burlywood;
@@ -150,7 +148,7 @@ h6 {
     padding: 10px;
     height: auto;
     min-width: 315px;
-    width: 320px;
+    width: 315px;
     max-width: 350px;
     color: white;
     margin: 10px;
