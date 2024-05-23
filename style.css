@@ -65,7 +65,7 @@ h1 {
 form {
     margin-left: 10px;
     min-width: 315px;
-    width: 350px;
+    width: 315px;
     max-width: 350px;
     background-color: brown;
     padding: 20px;
@@ -77,16 +77,7 @@ label {
     color: white;
 }
 
-.Data {
-    color: white;
-    background-color: brown;
-    border-radius: 20px;
-    width: 385px;
-    height: 210px;
-    margin-top: 15px;
-    padding: 20px;
-    top: 470px;
-}
+
 
 .bookSpace {
     display: flex;
