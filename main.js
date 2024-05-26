@@ -2,7 +2,7 @@ import DOMCreator from "./dom.js";
 import { factoryDom } from "./dom.js";
 import { formCallDisplayer } from "./dom.js";
 import { addbookBtnDisplay } from "./dom.js";
-
+import { searchHandle } from "./dom.js";
 // DOM CALLS
 const container = document.getElementById('container');
 const addBookNav = document.getElementById('addBookNav');
@@ -45,10 +45,10 @@ function loadLibraryFromStorage() {
 }
 
 // Display all books in the library
-function displayer() {
+function displayer(arr) {
     bookSpace.innerHTML = "";
-    for (let i = 0; i < myLibrary.length; i++) {
-        DOMCreator(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, i, myLibrary[i].read);
+    for (let i = 0; i < arr.length; i++) {
+        DOMCreator(arr[i].title, arr[i].author, arr[i].pages, i, arr[i].read);
     }
     myLibraryInfo();
     addbookBtnDisplay.appendNew()
@@ -56,7 +56,7 @@ function displayer() {
 }
 
 // Display the initial set of books
-displayer();
+displayer(myLibrary);
 
 // Update the total number of books displayed
 function myLibraryInfo() {
@@ -96,7 +96,7 @@ export function deleteFunc(theDiv) {
 // Refresh the book display
 export function refreshPage() {
     bookSpace.innerHTML = "";
-    displayer(); 
+    displayer(myLibrary); 
     myLibraryInfo();
 
     addBookNav.style.color = 'burlywood';
@@ -165,9 +165,47 @@ function deleteAllBooks() {
         createAlert('Cancelled', 1000);
         refreshPage();
     }
-
-
    
+}
 
-   
+
+export function searchAlg(inputTexts){
+    const searchForm = document.getElementById('formID')
+    const searchBtn = document.getElementById('searchButton')
+
+    const searchResultMessage = document.getElementById('searchResultMessage')
+
+    const search = myLibrary.find((book) => book.title === inputTexts)
+    const finder = [search]
+
+    if (search ) {
+      bookSpace.innerHTML = ""
+      displayer(finder)
+      
+      searchBtn.innerText = 'Cancel Search'
+      searchBtn.style.backgroundColor = 'red'
+      searchBtn.style.color = 'black'
+      
+        searchBtn.addEventListener('click', ()=>{
+            refreshPage()
+            searchBtn.innerText = 'Search'
+            searchBtn.style.backgroundColor = 'rgb(79, 21, 21)'
+            searchBtn.style.color = 'burlywood'
+            
+        })
+        
+
+        searchForm.reset()
+      console.log(finder);
+    } else {
+      
+        searchResultMessage.innerText = 'No Book Found'
+        searchResultMessage.style.color ='burlywood'
+        console.log('Not Found');
+    }
+
+    if(inputTexts === ""){
+        searchResultMessage.innerText = 'Please enter a search term to begin your search.'
+
+    }
 }

@@ -11,8 +11,9 @@
 
 <body>
     <!-- Navigation bar with a title and button to add a book -->
-    <nav>
+    <nav id="nav">
         <span id="numTotalBooks"></span>
+       
         <h1 class="rounded-bottom-2">Library</h1>
         <button class="btn" type="button" id="addBookNav">Add Book</button>
     </nav>
@@ -20,6 +21,13 @@
 
     <!-- Main container for the content -->
     <div class="container-fluid" id="container">
+        <div id="searchContainer">
+            <form id="formID">
+                <input type="search" id="searchInput" placeholder="Search Your Book" >
+                <button type="submit" id="searchButton">Search</button>
+            </form>
+            <p id="searchResultMessage"></p>
+        </div>
 
         <!-- Alert area for messages -->
         <aside class="alertDiv" id="alertDiv"></aside>

@@ -1,5 +1,6 @@
 import { deleteFunc } from "./main.js"
 import { refreshPage } from "./main.js"
+import { searchAlg } from "./main.js"
 // Book Library
 const bookSpace = document.querySelector('.bookSpace')
 
@@ -379,4 +380,26 @@ export const addbookBtnDisplay = (() => {
  return{emptyModel, newFormHandler,removeEmptyModel,appendNew}
 })()
 
+let isClicked = true
+export function searchHandle(){
+    const getNavContainer = document.getElementById('nav')
+    const searchForm = document.getElementById('formID')
+    const searchInput = document.getElementById('searchInput')
+    const searchBtn = document.getElementById('searchButton')
 
+    searchForm.addEventListener('submit', (e)=>{
+
+        e.preventDefault(); 
+        
+    
+        const searchFor = searchInput.value
+    
+        searchAlg(searchFor)
+
+
+    
+    isClicked = !isClicked
+
+    })
+}
+searchHandle()
