@@ -1,8 +1,6 @@
 import DOMCreator from "./dom.js";
 import { factoryDom } from "./dom.js";
-import { formCallDisplayer } from "./dom.js";
 import { addbookBtnDisplay } from "./dom.js";
-import { searchHandle } from "./dom.js";
 // DOM CALLS
 const container = document.getElementById('container');
 const addBookNav = document.getElementById('addBookNav');
@@ -168,9 +166,9 @@ function deleteAllBooks() {
    
 }
 
-
-export function searchAlg(inputTexts){
-    const searchForm = document.getElementById('formID')
+const searchForm = document.getElementById('formID')
+function searchAlg(inputTexts){
+    const searchInput = document.getElementById('searchInput')
     const searchBtn = document.getElementById('searchButton')
 
     const searchResultMessage = document.getElementById('searchResultMessage')
@@ -191,21 +189,28 @@ export function searchAlg(inputTexts){
             searchBtn.innerText = 'Search'
             searchBtn.style.backgroundColor = 'rgb(79, 21, 21)'
             searchBtn.style.color = 'burlywood'
+            searchForm.reset()
             
         })
         
 
-        searchForm.reset()
+
       console.log(finder);
-    } else {
-      
+    } else if(inputTexts === ""){ 
+        searchResultMessage.innerText = 'Please enter a search term to begin your search.'
+        searchResultMessage.style.color ='burlywood'
+    }else {
+       
         searchResultMessage.innerText = 'No Book Found'
         searchResultMessage.style.color ='burlywood'
         console.log('Not Found');
     }
 
-    if(inputTexts === ""){
-        searchResultMessage.innerText = 'Please enter a search term to begin your search.'
-
-    }
+ 
 }
+
+searchForm.addEventListener('submit', (e)=>{
+    e.preventDefault(); 
+    const searchFor = searchInput.value
+    searchAlg(searchFor)
+})
