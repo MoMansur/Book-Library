@@ -110,10 +110,18 @@ h1 {
         width: 15%;
     }
     #searchInput{
-        width: 66%;
+        width: 65%;
     }  
 }
-
+@media (max-width: 400px) { 
+    #searchButton {
+        width: 30%;
+        margin-right: auto;
+    }
+    #searchInput{
+        width: 61%;
+    }  
+}
 
 #form {
     margin-left: 10px;
