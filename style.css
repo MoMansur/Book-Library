@@ -53,15 +53,37 @@ h1 {
 
 }
 
+.readSpan{
+    margin: auto;
+}
+
+
+
+
+.container-fluid {
+    padding-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+}
+
+
+.alertDiv {
+    width: 100%;
+    position: fixed;
+}
+
 #searchContainer{
+    min-width: 300px;
     margin: 10px;
-    width: 98%;
+    width: 100%;
     background-color: brown;
     border-radius: 10px;
     padding: 1rem;
+    flex: 1;
 }
 #searchInput{
-    width: 88%;
+    width: 85%;
     height: 40px;
     border-radius: 10px;
     padding: 0.5rem;
@@ -69,7 +91,7 @@ h1 {
 }
 
 #searchButton{
-    width: 150px;
+    width: 15%;
     min-width: 100px;
     max-width: 200px;
     height: 40px;
@@ -79,25 +101,19 @@ h1 {
     font-size: 1rem;
     border-radius: 10px;
 
+    
+
 }
 
-.readSpan{
-    margin: auto;
+@media (max-width: 1500px) { 
+    #searchButton {
+        width: 15%;
+    }
+    #searchInput{
+        width: 66%;
+    }  
 }
 
-
-
-
-
-
-.container-fluid {
-    padding-top: 80px;
-}
-
-.alertDiv {
-    width: 100%;
-    position: fixed;
-}
 
 #form {
     margin-left: 10px;

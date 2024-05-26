@@ -189,15 +189,15 @@ function searchAlg(inputTexts){
             searchBtn.innerText = 'Search'
             searchBtn.style.backgroundColor = 'rgb(79, 21, 21)'
             searchBtn.style.color = 'burlywood'
-            searchForm.reset()
             
         })
-        
+        searchForm.reset()
+   
 
 
       console.log(finder);
     } else if(inputTexts === ""){ 
-        searchResultMessage.innerText = 'Please enter a search term to begin your search.'
+        searchResultMessage.innerText = 'Please type a Book Title'
         searchResultMessage.style.color ='burlywood'
     }else {
        

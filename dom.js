@@ -58,7 +58,7 @@ const DOMCreator = ((title, author, pages, index, read) => {
     const pForPages = factoryDom('p', 'pForAuthor', "pForAuthor")
     const changestatus = factoryDom('button', 'statusBtn', "btn btn-success")
     changestatus.setInnerText("Change Read Status")
-    changestatus.setWidth('19.8rem')
+    changestatus.setWidth('98%')
 
     const statusAnswer = factoryDom('span', 'statusBtn', "badge text-wrap")
     statusAnswer.setInnerText('')
@@ -91,12 +91,12 @@ const DOMCreator = ((title, author, pages, index, read) => {
     }
 
     const btnForEdit = factoryDom('button', 'editInfoBtn', "btn btn-primary m-1")
-    btnForEdit.setWidth("10rem")
+    btnForEdit.setWidth("48%")
     btnForEdit.setElementAttribute('type', 'submit')
     btnForEdit.setInnerText("Edit Info")
 
     const btnForRemove = factoryDom('button', 'removeBook', "btn btn-danger")
-    btnForRemove.setWidth("9rem")
+    btnForRemove.setWidth("48%")
     btnForRemove.setElementAttribute('type', 'button')
     btnForRemove.setInnerText("Remove Book")
 
@@ -128,7 +128,7 @@ const DOMCreator = ((title, author, pages, index, read) => {
     const btnForEditInp = factoryDom('button', 'editInfoBtn', "btn btn-primary m-1")
     btnForEditInp.setElementAttribute('type', 'submit')
     btnForEditInp.setInnerText("Update Book")
-    btnForEditInp.setWidth('19.3rem')
+    btnForEditInp.setWidth('97%')
 
     const btnForRemoveInp = factoryDom('button', 'removeBook', "btn btn-danger m-1")
     btnForRemoveInp.setElementAttribute('type', 'button')
