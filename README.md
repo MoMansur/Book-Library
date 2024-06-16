@@ -1,20 +1,35 @@
-WebLink: https://momansur.github.io/Book-Library/
+## Book Library
 
-**Description:**
-The Book Library project is a web application built with HTML, CSS, and JavaScript. It serves as a virtual library where users can manage their collection of books. The project provides functionalities such as adding new books, removing existing ones, updating book details, and marking books as read or unread.
+The Book Library project is a web application built with HTML, CSS, and JavaScript. It allows users to manage their collection of books by storing them locally in the browser's storage. Users can add new books, edit existing ones, mark books as read or unread, and delete books from their library.
 
-**Key Features:**
-**Add Book:** Users can add new books to their library by providing details such as title, author, and number of pages.
-**Edit Book:** Users can edit existing book details, including title, author, and number of pages.
-**Delete Book:** Users can remove books from their library.
-**Mark as Read/Unread:** Users can mark books as read or unread to track their reading progress.
-Responsive Design: The application is optimized for various screen sizes, providing a seamless experience across devices.
+### Features
+
+- **Add Book**: Add new books to your library by entering details such as title, author, and number of pages.
+- **Edit Book**: Modify existing book details including title, author, and page count.
+- **Delete Book**: Remove books from your library that you no longer need.
+- **Mark as Read/Unread**: Track your reading progress by marking books as read or unread.
+- **Local Storage**: Books are stored locally in the browser's storage, ensuring data persistence across sessions.
+- **Responsive Design**: The application is responsive and works seamlessly across desktop and mobile devices.
+
+### Technologies Used
+
+- **HTML**: Structure of the web page.
+- **CSS**: Styles for enhancing the user interface and responsiveness.
+- **JavaScript**: Logic and functionality for managing the book library, handling user interactions, and storing data in local storage.
+- **dom.js**: Helper functions for handling and creating DOM elements.
+
+### Screenshots
+
+![image](https://github.com/MoMansur/Book-Library/assets/58377731/9dd97ea3-93f1-46e0-8c66-fb78e3bce125)
 
 
-**index.html:** The main HTML file containing the structure of the web page.
-**style.css**: The CSS file containing styles for enhancing the appearance of the application.
-**main.js**: The JavaScript file containing the logic and functionality of the Book Library application.
-**dom.js:** handling and creating DOM elements
+### Demo
+
+Explore the live demo of the Book Library: [Book Library Demo](https://momansur.github.io/Book-Library/)
+
+### Contributing
+
+Contributions are welcome! If you find any bugs or have suggestions for improvements, please open an issue or a pull request on the GitHub repository.
 
 
-![Screenshot 2024-05-23 153927](https://github.com/MoMansur/Book-Library/assets/58377731/35f92954-3752-42fb-b6be-4dc735272d17)
+
