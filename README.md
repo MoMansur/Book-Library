@@ -1,3 +1,6 @@
+### Demo
+LIVE DEMO: [Book Library Demo](https://momansur.github.io/Book-Library/)
+
 ## Book Library
 
 The Book Library project is a web application built with HTML, CSS, and JavaScript. It allows users to manage their collection of books by storing them locally in the browser's storage. Users can add new books, edit existing ones, mark books as read or unread, and delete books from their library.
@@ -22,10 +25,6 @@ The Book Library project is a web application built with HTML, CSS, and JavaScri
 
 ![image](https://github.com/MoMansur/Book-Library/assets/58377731/9dd97ea3-93f1-46e0-8c66-fb78e3bce125)
 
-
-### Demo
-
-Explore the live demo of the Book Library: [Book Library Demo](https://momansur.github.io/Book-Library/)
 
 ### Contributing
 
